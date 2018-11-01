@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    Hello world!
+  <xmp>
+      if [ -d $1 ]; then 
+          echo '$1文件存在' 
+          exit
+      else
+          mkdir $1
+          cd $1
+          mkdir css js
+          touch index.html css/style.css js/main.js
+          echo "<!DOCTYPE><title>Hello</title><h1>Hi</h1>" > index.html
+          cd css
+          echo 'h1{color: red;}' > style.css
+          cd ..
+          cd js
+          echo 'var string = "Hello World" alert(string)' > main.js
+          cd ..
+          exit
+      fi
+  </xmp>
+  
+      
+    
 </body>
 </html>
