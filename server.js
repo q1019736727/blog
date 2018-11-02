@@ -21,7 +21,7 @@ var server = http.createServer(function(request, response){
 
   if(path == '/style.css'){
       response.setHeader('Content-Type','text/css; charset=utf-8')
-      response.write('body{background-color: red}')
+      response.write('body{background-color: gray}')
       response.end()
   }else if(path == '/main.js'){
     response.setHeader('Content-Type','text/javascript; charset=utf-8')
