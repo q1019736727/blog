@@ -19,12 +19,27 @@ var server = http.createServer(function(request, response){
 
   /******** 从这里开始看，上面不要看 ************/
 
-
-
-
-
-
-
+  if(path == '/style.css'){
+      response.setHeader('Content-Type','text/css; charset=utf-8')
+      response.write('body{background-color: red}')
+      response.end()
+  }else if(path == '/main.js'){
+    response.setHeader('Content-Type','text/javascript; charset=utf-8')
+    response.write('alert("这是js")')
+    response.end()
+  }else if(path == '/index'){
+    response.setHeader('Content-Type','text/html; charset=utf-8')
+    response.write('<!DOCTYPE>\n<html>' + 
+    '<head><link rel="stylesheet" href="/style.css">'+
+    '</head><body>'+
+    '<h1>hello world! 你好 世界!</h1>'+
+    '<script src="/main.js"></script>'+
+    '</body></html>')
+    response.end()
+  }else{
+      response.statusCode = 404
+      response.end()
+  }
 
 
   /******** 代码结束，下面不要看 ************/
