@@ -10,6 +10,10 @@ body{
 a{
     text-decoration: none;
 }
+.topNav{
+    position: fixed;
+    width: 100%;
+}
 .topNav .logo{
     float: left;
     padding-top: 17px;
@@ -47,4 +51,16 @@ a{
 }
 .topNav ul li a:hover{
     border-bottom: 3px solid #e6686e;
+}
+.banner{
+    background-image: url(../Img/bg.jpg);
+    height: 515px;
+    /* 居中 */
+    background-position: center center;
+    /* 背景图片自适应 */
+    background-size: cover;
+}
+.banner .mask{
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 515px;
 }
