@@ -4,30 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./CSS/style.css">
     <title>Document</title>
 </head>
 <body>
-  <xmp>
-      if [ -d $1 ]; then 
-          echo '$1文件存在' 
-          exit
-      else
-          mkdir $1
-          cd $1
-          mkdir css js
-          touch index.html css/style.css js/main.js
-          echo "<!DOCTYPE><title>Hello</title><h1>Hi</h1>" > index.html
-          cd css
-          echo 'h1{color: red;}' > style.css
-          cd ..
-          cd js
-          echo 'var string = "Hello World" alert(string)' > main.js
-          cd ..
-          exit
-      fi
-  </xmp>
-  
-      
+    <div class="topNav clearfix">
+        <a class="logo" href="#">
+            <span class="RS">RS</span><span class="card">card</span>
+        </a>
+        <nav class="clearfix">
+                <ul class="clearfix">
+                    <li>
+                        <a href="#">关于</a>
+                    </li>
+                    <li>
+                        <a href="#">技能</a>
+                    </li>
+                    <li>
+                        <a href="#">作品</a>
+                    </li>
+                    <li>
+                        <a href="#">博客</a>
+                    </li>
+                    <li>
+                        <a href="#">日历</a>
+                    </li>
+                    <li>
+                        <a href="#">联系方式</a>
+                    </li>
+                    <li>
+                        <a href="#">其他</a>
+                    </li>
+                </ul>
+            </nav>
+    </div>
+    
+
     
 </body>
 </html>

@@ -1,0 +1,50 @@
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+body{
+    background-color: black;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+.topNav .logo{
+    float: left;
+    padding-top: 17px;
+    padding-left: 15px;
+}
+.topNav .logo .RS{
+    color: #e5686e;
+    font-size: 22px;
+    font-family: 'Arial Black';
+}
+.topNav .logo .card{ 
+    color: #9a9da2;
+    font-size: 22px;
+    font-family: 'Arial Black';
+}
+.topNav ul{
+    float: right;
+}
+.topNav ul li{
+    float: left;
+    list-style: none;
+    padding-left: 17px;
+    padding-right: 17px;
+}
+.topNav ul li a{
+    list-style: none;
+    text-decoration: none;
+    color: #c2c4c6;
+    font-size: 12px;
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+}
+.topNav ul li a:hover{
+    border-bottom: 3px solid #e6686e;
+}
