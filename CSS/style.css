@@ -231,11 +231,100 @@ body  main .selfIntroduction{
     background-color: #fae1e2;
     margin-bottom: 38px;
     border-radius: 2px;
+    margin-top: 5px;
 }
 .skills .skillWrapper ol li .bar .barProccess{
     height: 100%;
     background-color: #e6686e;
     border-radius: 2px;
 }
+.portfolio{
+    max-width: 930px;
+    margin: 80px auto;
+    text-align: center;
+}
+.portfolio h2{
+    font-weight: bold;
+    font-size: 30px;
+}
+.portfolio .proccessWrapper{
+    margin-top: 40px;
+}
+.portfolio .proccessWrapper ol{
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+}
+.portfolio .proccessWrapper li{
+    float: left;
+    margin-left: 80px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.portfolio .proccessWrapper li:nth-child(1){
+    margin-left: 0px;
+}
+.portfolio .proccessWrapper .bar{
+    height: 5px;
+    background-color: #fff;
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 290px;
+    border-radius: 2px;
+}
+.portfolio .proccessWrapper .bar .barProccess.state1{
+    height: 100%;
+    background: #d67071;
+    width: 33px;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+.portfolio .proccessWrapper .bar .barProccess.state2{
+    height: 100%;
+    background: #d67071;
+    width: 34px;
+    border-radius: 2px;
+    margin-left: 112px;
+    transition: all 0.3s;
+}
+.portfolio .proccessWrapper .bar .barProccess.state3{
+    height: 100%;
+    background: #d67071;
+    width: 64px;
+    border-radius: 2px;
+    margin-left: 226px;
+    transition: all 0.3s;
+}
+.portfolio .portfolioPictrue{
+    height: 569px;;
+    margin-top: 30px;
+    position: relative;
+}
+.portfolio .portfolioPictrue .jb1{
+    background-image: url(../Img/jb1.jpg);
+    height: 569px;
+    width: 607px;
+    position: absolute;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.19);
+}
+.portfolio .portfolioPictrue .jb2{
+    background-image: url(../Img/jb2.jpg);
+    height: 273px;
+    width: 289px;
+    position: absolute;
+    left: 637px;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.19);
+}
+.portfolio .portfolioPictrue .jb3{
+    background-image: url(../Img/jb3.jpg);
+    height: 273px;
+    width: 289px;
+    position: absolute;
+    left: 637px;
+    top: 297px;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.19);
+}
+
+
 
 

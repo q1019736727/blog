@@ -142,6 +142,37 @@
         </div>
     </section>
 
+    <section class="portfolio">
+        <h2>作品集</h2>
+        <div class="proccessWrapper"/>
+            <ol class="clearfix">
+                <li id="portfolioAction1">所有</li>
+                <li id="portfolioAction2">框架</li>
+                <li id="portfolioAction3">混合框架</li>
+            </ol>
+            <div class="bar">
+                <div id="portfolioBar" class="barProccess state1">
+
+                </div>
+            </div>
+        </div>
+        <div class="portfolioPictrue">
+            <div class="jb1"></div>
+            <div class="jb2"></div>
+            <div class="jb3"></div>
+        </div>
+    </section>
+    <script>
+        portfolioAction1.onclick = function(){
+            portfolioBar.className = "barProccess state1"
+        }
+        portfolioAction2.onclick = function(){
+            portfolioBar.className = "barProccess state2"
+        }
+        portfolioAction3.onclick = function(){
+            portfolioBar.className = "barProccess state3"
+        }
+    </script>
 
 
 
@@ -162,7 +193,7 @@
 
 
 
-    <div style="height:1300px"></div>
+
 
 </body>
 
