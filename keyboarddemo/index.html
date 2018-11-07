@@ -31,6 +31,10 @@
             'j':'jd.com',
             'b':'baidu.com'
         }
+        let storeArr = localStorage.getItem('store' || 'null')//后面null防止被手动删除localStorage后出错
+        if(storeArr){
+            hash = JSON.parse(storeArr)
+        }
         let main = document.getElementById('mainBody')
         for (let index = 0; index < keys.length; index++) {
             
@@ -50,6 +54,8 @@
                 button.onclick = function(){
                     let value = prompt('输入键')
                     hash[kbd.id] = value;
+                    //将数据存入浏览器中
+                    localStorage.setItem('store',JSON.stringify(hash))
                 }
                 kbd.appendChild(button);
                 div.appendChild(kbd)
@@ -67,7 +73,6 @@
             }
 
         }
-
     </script>
 </body>
 </html>
