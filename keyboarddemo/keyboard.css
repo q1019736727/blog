@@ -1,0 +1,33 @@
+main{
+    text-align: center;
+
+}
+main > #mainBody{
+
+}
+main > #mainBody > div{
+    margin-top: 10px;
+
+}
+main > #mainBody > div kbd{
+    width: 5em;
+    height: 5em;
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid red;
+    /* 设置小写字母大写 */
+    text-transform: uppercase;
+    margin-left: 0.5em;
+    position: relative;
+}
+main > #mainBody > div kbd button{
+    position: absolute;
+    border-width: 0;
+    right: 0px;
+    bottom: 0px;
+    display: none;
+    
+}
+main > #mainBody > div kbd:hover button{
+   display: inline;
+}
