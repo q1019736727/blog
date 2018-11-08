@@ -1,0 +1,21 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.clearfix{
+    content: '';
+    display: block;
+    clear: both;
+}
+#canvas{
+    height: 100vh;
+    background: #000;
+    position: relative;
+}
+#canvas .point{
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: white;
+
+}
