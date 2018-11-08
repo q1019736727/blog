@@ -6,57 +6,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./keyboard.css">
-    <title>Document</title>
+    <title>我的MacPro键盘</title>
 </head>
-    <header></header>
+
+<body>
+    <header>
+        <img src="./img/left.png" alt="">
+        <div>
+            <span>Hello! 欢迎光临我的MacPro键盘</span>
+            <img src="./img/right.png" alt="">
+        </div>
+    </header>
 
     <main>
-        <div id="mainBody"></div>
+        <div class="keyWrapper">
+            <div id="mainBody">
+
+            </div>
+        </div>
+
     </main>
 
     <footer></footer>
-<body>
     <script>
-        var keys = [
-            ['q','w','e','r','t','y','u','i','o','p'],
-            ['a','s','d','f','g','h','j','k','l'],
-            ['z','x','c','v','b','n','m']
-        ]
-        var hash = {
-            'q':'qq.com',
-            'w':'weibo.com',
-            's':'sohu.com',
-            't':'taobao.com',
-            'g':'google.com',
-            'j':'jd.com',
-            'b':'baidu.com'
-        }
-        let storeArr = localStorage.getItem('store' || 'null')//后面null防止被手动删除localStorage后出错
-        if(storeArr){
+        // 初始化数据
+        let data = init()
+        var hash = data['hash']
+        var keys = data['keys']
+
+        let storeArr = localStorage.getItem('store' || 'null') //后面null防止被手动删除localStorage后出错
+        if (storeArr) {
             hash = JSON.parse(storeArr)
         }
         let main = document.getElementById('mainBody')
         for (let index = 0; index < keys.length; index++) {
-            
-            let div = document.createElement('div')
+
+            let div = getElement('div')
             let mainBody = document.getElementById('mainBody')
             mainBody.appendChild(div)
 
-            let arr =  keys[index]
+            let arr = keys[index]
 
             for (let index2 = 0; index2 < arr.length; index2++) {
                 let kbd = document.createElement('kbd')
-                kbd.textContent = arr[index2]
                 //这里的id可以设置为任何数
                 kbd.id = arr[index2]
-                let button = document.createElement('button')
-                button.textContent = '编辑'
-                button.onclick = function(){
-                    let value = prompt('输入键')
+                let button = getElement('button',{'textContent':'编辑'})
+                button.onclick = function (ele) {
+                    let value = prompt('请输入网址')
                     hash[kbd.id] = value;
                     //将数据存入浏览器中
-                    localStorage.setItem('store',JSON.stringify(hash))
+                    localStorage.setItem('store', JSON.stringify(hash))
+
+                    let imgSibling = ele.target.previousSibling
+                    if (value) {
+                        imgSibling.src = 'http://' + value + '/favicon.ico'
+                        imgSibling.onerror = function (ele) {
+                            imgSibling.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+                        }
+                    } else {
+                        imgSibling.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+                    }
                 }
+                let span = document.createElement('span')
+                span.textContent = arr[index2]
+                let img = getImg(hash[arr[index2]])
+                kbd.appendChild(span);
+                kbd.appendChild(img);
                 kbd.appendChild(button);
                 div.appendChild(kbd)
             }
@@ -64,15 +80,69 @@
 
         document.onkeypress = function (ele) {
 
-            if (hash[ele.key]){
+            if (hash[ele.key]) {
                 // 当前页面直接访问网站
                 // location.href =  'http://'+hash[ele.key]
-                window.open('http://'+hash[ele.key],'_blank')
-            }else{
+                window.open('http://' + hash[ele.key], '_blank')
+            } else {
                 alert('未设置该键')
             }
 
         }
+
+        function init() {
+            var keys = [
+                ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+                ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+                ['z', 'x', 'c', 'v', 'b', 'n', 'm']
+            ]
+            var hash = {
+                'a': 'alibaba.com',
+                'q': 'www.qq.com',
+                'e': 'ele.com',
+                'w': 'weibo.com',
+                's': 'sohu.com',
+                't': 'taobao.com',
+                'g': 'google.com',
+                'j': 'jd.com',
+                'b': 'baidu.com',
+                'y': 'youku.com',
+                'u': 'umeng.com',
+                'i': 'iqiyi.com',
+                'o': 'oppo.com',
+                'v': 'vivo.com',
+            }
+            return {
+                'keys': keys,
+                'hash': hash
+            }
+        }
+
+        //获取一个img
+        function getImg(url) {
+            let img = document.createElement('img')
+            if (url) {
+                img.src = 'http://' + url + '/favicon.ico'
+                img.onerror = function (ele) {
+                    ele.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+                }
+            } else {
+                img.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+            }
+            return img
+        }
+
+        //创建一个元素
+        function getElement(eleClass, attr) {
+            let ele = document.createElement(eleClass)
+            if (attr) {
+                for (const key in attr) {
+                    ele[key] = attr[key]
+                }
+            }
+            return ele
+        }
     </script>
 </body>
+
 </html>

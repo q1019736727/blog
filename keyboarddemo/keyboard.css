@@ -1,33 +1,113 @@
-main{
-    text-align: center;
+body {
+    background: white url(./img/bg.png);
+    margin: 0;
+    pad: 0;
+}
+header > img{
+    position: fixed;
+}
+header div{
+    position: fixed;
+    top: -25px;
+    right: -25px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+header div span{
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 12px;
+    display: inline-block;
+    border-radius: 5px;
+    background-color: transparent;
+    color: transparent;
+    float: left;
+    margin-top: 20px;
+    margin-right: 5px;
+}
+header div:hover{
+    top: -8px;
+    right: -8px;
+    cursor: pointer;
+}
+header div:hover span{
+    background-color: white;
+    color: black;
+}
+main {
+    /* 浏览器当前窗口高度 */
+    height: 100vh;
+}
+
+main #mainBody {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 40px 45px 50px;
+    border-radius: 10px;
+}
+
+main #mainBody div:nth-child(2) {
+    margin-left: 22px;
+}
+
+main #mainBody div:nth-child(3) {
+    margin-left: 59px;
 
 }
-main > #mainBody{
 
+main #mainBody>div {
+    margin-top: 20px;
 }
-main > #mainBody > div{
-    margin-top: 10px;
 
-}
-main > #mainBody > div kbd{
-    width: 5em;
-    height: 5em;
+main #mainBody>div kbd {
+    width: 60px;
+    height: 48px;
     display: inline-block;
     vertical-align: top;
-    border: 1px solid red;
+    border: 1px solid #000;
+    margin-left: 15px;
+    position: relative;
+    color: white;
+    background-color: #000;
+    box-shadow: 3px 4px 5px -1px rgba(0, 0, 0, 0.46);
+    border-radius: 5px;
+}
+
+main #mainBody>div kbd span {
     /* 设置小写字母大写 */
     text-transform: uppercase;
-    margin-left: 0.5em;
-    position: relative;
+    font-family: Helvetica;
+    position: absolute;
+    font-size: 13px;
+    top: 3px;
+    left: 4px;
+
 }
-main > #mainBody > div kbd button{
+main #mainBody>div kbd img {
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    width: 16px;
+    height: 16px;
+}
+main #mainBody>div kbd button {
     position: absolute;
     border-width: 0;
     right: 0px;
     bottom: 0px;
     display: none;
-    
+    background: #000;
+    color: white;
+    font-size: 10px;
 }
-main > #mainBody > div kbd:hover button{
-   display: inline;
+
+main #mainBody>div kbd:hover button {
+    display: inline;
+}
+
+main .keyWrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
