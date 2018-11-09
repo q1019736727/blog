@@ -1,5 +1,6 @@
 
 var canvas = document.getElementById('canvas')
+
 var flag = false
 
 // canvas.onmousedown = function(ele){
