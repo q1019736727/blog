@@ -11,8 +11,7 @@ clearLine()
 
 //描绘线条
 function drawLine() {
-    context.beginPath()
-    context.lineWidth = 3
+   
 
     var isDown = false //是否按下去
     var frame = {
@@ -35,9 +34,10 @@ function drawLine() {
             let X = ele.clientX
             let Y = ele.clientY
             if (isClear) {
-                context.clearRect(X, Y, 5, 5)
-                context.restore()
+                context.clearRect(X-25, Y-25, 50, 50)
             } else {
+                context.beginPath()
+                context.lineWidth = 3
                 context.moveTo(X, Y)
                 context.lineTo(frame.x, frame.y)
                 context.stroke();
