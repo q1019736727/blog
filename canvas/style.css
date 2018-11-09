@@ -1,0 +1,13 @@
+body{
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+#canvas{
+    background: grey;
+}
+.tool{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
