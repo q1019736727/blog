@@ -11,13 +11,32 @@
 
 <body>
     <canvas id="canvas"></canvas>
-    <div class="tool">
-        <button id="clear">橡皮擦</button>
-        <button id="draw">画笔</button>
-    </div>
+    <ol class="clearfix">
+        <li>
+            <svg class="icon" id="pen" aria-hidden="true">
+                <use xlink:href="#icon-pen"></use>
+            </svg>            
+        </li>
+        <li>
+            <svg class="icon" id="eraser" aria-hidden="true">
+                <use xlink:href="#icon-eraser"></use>
+            </svg>            
+        </li>
+        <li>
+            <svg class="icon" id="clear" aria-hidden="true">
+                <use xlink:href="#icon-clear"></use>
+            </svg>            
+        </li>
+        <li>
+            <svg class="icon" id="download" aria-hidden="true">
+                <use xlink:href="#icon-download"></use>
+            </svg>            
+        </li>
+    </ol>
+   
     <!-- script一定要写后面啊,不然调试你一上午都找不到原因 -->
     <script src="./min.js"></script>
-  
+    <script src="//at.alicdn.com/t/font_911709_5o1a35jf9im.js"></script>
 </body>
 
 </html>
