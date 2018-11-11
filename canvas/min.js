@@ -1,7 +1,7 @@
 var canvas = document.getElementById('canvas')
 var context = canvas.getContext('2d')
 var drawColor = 'black'
-var lineWidth = 3
+var lineWidth = 1
 var isClear = false //是否是清除
 
 autoCanvasWH()
