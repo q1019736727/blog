@@ -28,11 +28,13 @@ h2{
     padding: 5px 0 20px 0;
     transition: all 0.3s;
     z-index: 1;
+    color: #c2c4c6;
 }
 .topNav.activity{
     background-color: #fff;
     box-shadow: 1px 2px 4px rgba(200, 200, 200, 0.6);
     padding: 0 0 15px 0;
+    color: #3d4451;
 }
 .topNav .logo{
     float: left;
@@ -62,7 +64,7 @@ h2{
 .topNav ul li a{
     list-style: none;
     text-decoration: none;
-    color: #c2c4c6;
+    color: inherit;
     font-size: 12px;
     display: block;
     padding-top: 5px;
