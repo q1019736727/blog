@@ -19,7 +19,7 @@
             justify-content: center;
             align-items: center;
             background: #fff;
-            z-index: 1;
+            z-index: 2;
         }
 
         .loadWelcome.hideWelcome {
@@ -35,7 +35,7 @@
     <div id="siteWelcome" class="loadWelcome">
         <div class="loading"></div>
     </div>
-    <div class="topNav clearfix">
+    <div id="topNavFix" class="topNav clearfix">
         <a class="logo" href="#">
             <span class="RS">RS</span><span class="card">card</span>
         </a>
@@ -199,7 +199,15 @@
         setTimeout(function () {
             siteWelcome.classList.add('hideWelcome')
             document.documentElement.style.overflow = 'auto';//页面滑动
-        }, 3000)
+        }, 300)
+        window.onscroll = function(){
+            if(window.scrollY > 0){
+                topNavFix.classList.add('activity')
+            }else{
+                topNavFix.classList.remove('activity')
+            }
+        }
+
     </script>
     <script src="//at.alicdn.com/t/font_906046_4rxu3asq18g.js"></script>
 
