@@ -5,11 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./CircleAnimation/style.css">
+    <script src="//at.alicdn.com/t/font_906046_4rxu3asq18g.js"></script>
+
     <title>ChiuYung</title>
+    <style>
+        .loadWelcome {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            z-index: 1;
+        }
+
+        .loadWelcome.hideWelcome {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
+    <script>
+        document.documentElement.style.overflow = 'hidden';//禁止页面滑动
+    </script>
+    <div id="siteWelcome" class="loadWelcome">
+        <div class="loading"></div>
+    </div>
     <div class="topNav clearfix">
         <a class="logo" href="#">
             <span class="RS">RS</span><span class="card">card</span>
@@ -143,17 +168,17 @@
 
     <section class="portfolio">
         <h2>作品集</h2>
-        <div class="proccessWrapper"/>
-            <ol class="clearfix">
-                <li id="portfolioAction1">所有</li>
-                <li id="portfolioAction2">框架</li>
-                <li id="portfolioAction3">混合框架</li>
-            </ol>
-            <div class="bar">
-                <div id="portfolioBar" class="barProccess state1">
+        <div class="proccessWrapper" />
+        <ol class="clearfix">
+            <li id="portfolioAction1">所有</li>
+            <li id="portfolioAction2">框架</li>
+            <li id="portfolioAction3">混合框架</li>
+        </ol>
+        <div class="bar">
+            <div id="portfolioBar" class="barProccess state1">
 
-                </div>
             </div>
+        </div>
         </div>
         <div class="portfolioPictrue">
             <div class="jb1"></div>
@@ -162,39 +187,21 @@
         </div>
     </section>
     <script>
-        portfolioAction1.onclick = function(){
+        portfolioAction1.onclick = function () {
             portfolioBar.className = "barProccess state1"
         }
-        portfolioAction2.onclick = function(){
+        portfolioAction2.onclick = function () {
             portfolioBar.className = "barProccess state2"
         }
-        portfolioAction3.onclick = function(){
+        portfolioAction3.onclick = function () {
             portfolioBar.className = "barProccess state3"
         }
-        console.log(NaN === NaN)
+        setTimeout(function () {
+            siteWelcome.classList.add('hideWelcome')
+            document.documentElement.style.overflow = 'auto';//页面滑动
+        }, 3000)
     </script>
     <script src="//at.alicdn.com/t/font_906046_4rxu3asq18g.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 
