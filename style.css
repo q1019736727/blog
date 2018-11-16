@@ -66,7 +66,7 @@ h2{
     border-bottom: 3px solid #e6686e;
 }
 .banner{
-    background-image: url(../Img/bg.jpg);
+    background-image: url(./Img/bg.jpg);
     height: 515px;
     /* 居中 */
     background-position: center center;
@@ -306,14 +306,14 @@ body  main .selfIntroduction{
     position: relative;
 }
 .portfolio .portfolioPictrue .jb1{
-    background-image: url(../Img/jb1.jpg);
+    background-image: url(./Img/jb1.jpg);
     height: 569px;
     width: 607px;
     position: absolute;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.19);
 }
 .portfolio .portfolioPictrue .jb2{
-    background-image: url(../Img/jb2.jpg);
+    background-image: url(./Img/jb2.jpg);
     height: 273px;
     width: 289px;
     position: absolute;
@@ -321,7 +321,7 @@ body  main .selfIntroduction{
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.19);
 }
 .portfolio .portfolioPictrue .jb3{
-    background-image: url(../Img/jb3.jpg);
+    background-image: url(./Img/jb3.jpg);
     height: 273px;
     width: 289px;
     position: absolute;
