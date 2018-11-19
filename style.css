@@ -6,7 +6,7 @@
 body{
     background-color: #efefef;
 }
-*{
+*,ul,ol{
     margin: 0;
     padding: 0;
 }
@@ -60,6 +60,7 @@ h2{
     list-style: none;
     padding-left: 17px;
     padding-right: 17px;
+    position: relative;
 }
 .topNav ul li a{
     list-style: none;
@@ -70,10 +71,58 @@ h2{
     padding-top: 5px;
     padding-bottom: 5px;
     border-top: 3px solid transparent;
-    border-bottom: 3px solid transparent;
+    position: relative;
 }
-.topNav ul li a:hover{
-    border-bottom: 3px solid #e6686e;
+.topNav ul li .menuList{
+    padding-top: 0;
+    position: absolute;
+    left: 0;
+    top: 110%;
+    width: 100%;
+    display: none;
+    background: white;
+    padding: 10px 20px 10px 0px;
+    box-shadow: 2px 2px 2px rgba(200,200,200,0.6);
+}
+.topNav ul li .menuList.menuActiviyt{
+    display: block;
+    animation: menuMove 0.3s linear;
+}
+@keyframes menuMove {
+    0%{
+        left: -100%;
+        opacity: 0;
+    }
+    100%{
+        left: 0;
+        opacity: 1;
+    }
+}
+.topNav ul li .menuList li{
+    white-space: nowrap;
+    margin-top: 10px;
+}
+.topNav ul li .menuList li:hover {
+    cursor: pointer;
+}
+.topNav ul li:hover a::after{
+    content: '';
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 100%;
+    height: 3px;
+    width: 100%;
+    background: #e6686e;
+    animation: menuTra 0.2s linear;
+}
+@keyframes menuTra{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
 }
 .banner{
     background-image: url(./Img/bg.jpg);
