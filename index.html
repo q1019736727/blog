@@ -145,31 +145,31 @@
                 <li>
                     JavaScript
                     <div class="bar">
-                        <div class="barProccess" style="width: 80%"></div>
+                        <div class="barProccess"></div>
                     </div>
                 </li>
                 <li>
                     jQuery
                     <div class="bar">
-                        <div class="barProccess" style="width: 80%"></div>
+                        <div class="barProccess"></div>
                     </div>
                 </li>
                 <li>
                     Node.js
                     <div class="bar">
-                        <div class="barProccess" style="width: 80%"></div>
+                        <div class="barProccess"></div>
                     </div>
                 </li>
                 <li>
                     Vue.js
                     <div class="bar">
-                        <div class="barProccess" style="width: 90%"></div>
+                        <div class="barProccess"></div>
                     </div>
                 </li>
                 <li>
                     React.js
                     <div class="bar">
-                        <div class="barProccess" style="width: 70%"></div>
+                        <div class="barProccess"></div>
                     </div>
                 </li>
             </ol>
@@ -185,7 +185,7 @@
             <li id="portfolioAction3">混合框架</li>
         </ol>
         <div class="bar">
-            <div id="portfolioBar" class="barProccess state1">
+            <div id="portfolioBar" class="barProccess1 state1">
 
             </div>
         </div>
@@ -200,13 +200,13 @@
     <script src="https://cdn.bootcss.com/tween.js/r14/Tween.min.js"></script>
     <script>
         portfolioAction1.onclick = function () {
-            portfolioBar.className = "barProccess state1"
+            portfolioBar.className = "barProccess1 state1"
         }
         portfolioAction2.onclick = function () {
-            portfolioBar.className = "barProccess state2"
+            portfolioBar.className = "barProccess1 state2"
         }
         portfolioAction3.onclick = function () {
-            portfolioBar.className = "barProccess state3"
+            portfolioBar.className = "barProccess1 state3"
         }
         // setTimeout(function () {
         //     siteWelcome.classList.add('hideWelcome')
@@ -219,9 +219,8 @@
                 topNavFix.classList.remove('activity')
             }
             highLight()
-            // scrollerSkillAnimate()
+            scrollerSkillAnimate()
         }
-
         function highLight(){
             let datas = document.querySelectorAll('[data-x]')
             let currentY  = window.scrollY
@@ -239,7 +238,16 @@
 
         }
 
+        //进度条动画
         function scrollerSkillAnimate(){
+            let barProccess = document.getElementsByClassName('barProccess')
+            let skillWrapper = document.getElementsByClassName('skillWrapper')[0]
+            console.log((window.screen.availHeight + window.scrollY),skillWrapper.offsetTop+200)
+            if ((window.screen.availHeight + window.scrollY) > (skillWrapper.offsetTop+300)){
+                for (let i = 0; i<barProccess.length;i++){
+                    barProccess[i].classList.add('activie'+ i)
+                }
+            }
 
         }
 
