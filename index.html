@@ -242,8 +242,7 @@
         function scrollerSkillAnimate(){
             let barProccess = document.getElementsByClassName('barProccess')
             let skillWrapper = document.getElementsByClassName('skillWrapper')[0]
-            console.log((window.screen.availHeight + window.scrollY),skillWrapper.offsetTop+200)
-            if ((window.screen.availHeight + window.scrollY) > (skillWrapper.offsetTop+300)){
+            if ((window.screen.availHeight + window.scrollY) > (skillWrapper.offsetTop+200)){
                 for (let i = 0; i<barProccess.length;i++){
                     barProccess[i].classList.add('activie'+ i)
                 }
