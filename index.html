@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//at.alicdn.com/t/font_906046_4rxu3asq18g.js"></script>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./CircleAnimation/style.css">
-    <script src="//at.alicdn.com/t/font_906046_4rxu3asq18g.js"></script>
-
     <title>ChiuYung</title>
     <style>
         .loadWelcome {
@@ -29,12 +28,12 @@
 </head>
 
 <body>
-    <script>
-        document.documentElement.style.overflow = 'hidden';//禁止页面滑动
-    </script>
-    <div id="siteWelcome" class="loadWelcome">
-        <div class="loading"></div>
-    </div>
+    <!--<script>-->
+        <!--document.documentElement.style.overflow = 'hidden';//禁止页面滑动-->
+    <!--</script>-->
+    <!--<div id="siteWelcome" class="loadWelcome">-->
+        <!--<div class="loading"></div>-->
+    <!--</div>-->
     <div id="topNavFix" class="topNav clearfix">
         <a class="logo" href="#">
             <span class="RS">RS</span><span class="card">card</span>
@@ -80,7 +79,7 @@
         <div class="mask"></div>
     </div>
     <main>
-        <div class="userCard" id="aboutMe">
+        <div data-x class="userCard" id="aboutMe">
             <div class="pictureAndText clearfix">
                 <div class="picture">
                     <img src="./Img/avatar.jpg" alt="头像">
@@ -133,7 +132,7 @@
             <h2>精通多种编程语言包括JavaScript、SQL和c . Stng背景的项目管理和客户关系。</h2>
         </div>
     </main>
-    <section class="skills" id="skills">
+    <section data-x class="skills" id="skills">
         <h2>技能</h2>
         <div class="skillWrapper">
             <ol class="clearfix">
@@ -177,7 +176,7 @@
         </div>
     </section>
 
-    <section class="portfolio" id="works">
+    <section data-x class="portfolio" id="works">
         <h2>作品集</h2>
         <div class="proccessWrapper" />
         <ol class="clearfix">
@@ -197,6 +196,7 @@
             <div class="jb3"></div>
         </div>
     </section>
+    <script src="https://cdn.bootcss.com/tween.js/r14/Tween.min.js"></script>
     <script>
         portfolioAction1.onclick = function () {
             portfolioBar.className = "barProccess state1"
@@ -207,10 +207,10 @@
         portfolioAction3.onclick = function () {
             portfolioBar.className = "barProccess state3"
         }
-        setTimeout(function () {
-            siteWelcome.classList.add('hideWelcome')
-            document.documentElement.style.overflow = 'auto';//页面滑动
-        }, 1000)
+        // setTimeout(function () {
+        //     siteWelcome.classList.add('hideWelcome')
+        //     document.documentElement.style.overflow = 'auto';//页面滑动
+        // }, 1000)
         window.onscroll = function(){
             if(window.scrollY > 0){
                 topNavFix.classList.add('activity')
@@ -235,6 +235,8 @@
                 }
             }
         }
+        //tween.js动画要求(获取处理器好坏)
+        requestAnimationFrame(animate);
 
         let aTags = document.querySelectorAll('#topNavFix nav a')
         for (var index = 0; index<aTags.length;index++){
@@ -243,11 +245,26 @@
                 ele.preventDefault()
                 let currentEle = ele.currentTarget
                 let scrollerView = document.querySelector(currentEle.getAttribute('href'))
-                if (scrollerView) {
-                    let y =  scrollerView.offsetTop
-                    window.scroll(0,y-80)
-                }
+
+                let currentTop = window.scrollY
+                let targetTop = scrollerView.offsetTop - 80
+                let s = targetTop - currentTop
+                var coords = {y:currentTop}
+                var t = Math.abs((s/100)*300)
+                if (t>500){t=500}
+                var tween = new TWEEN.Tween(coords)
+                    .to({y:targetTop},t)
+                    .easing(TWEEN.Easing.Quadratic.InOut)
+                    .onUpdate(function () {
+                        window.scroll(0,coords.y)
+                    })
+                    .start();
             }
+        }
+
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
         }
 
 
