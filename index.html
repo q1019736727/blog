@@ -139,7 +139,7 @@
                 <li>
                     HTML & CSS
                     <div class="bar">
-                        <div class="barProccess" style="width: 70%"></div>
+                        <div class="barProccess"></div>
                     </div>
                 </li>
                 <li>
@@ -196,6 +196,7 @@
             <div class="jb3"></div>
         </div>
     </section>
+    <div style='height:100px'></div>
     <script src="https://cdn.bootcss.com/tween.js/r14/Tween.min.js"></script>
     <script>
         portfolioAction1.onclick = function () {
@@ -217,6 +218,30 @@
             }else{
                 topNavFix.classList.remove('activity')
             }
+            highLight()
+            // scrollerSkillAnimate()
+        }
+
+        function highLight(){
+            let datas = document.querySelectorAll('[data-x]')
+            let currentY  = window.scrollY
+            var index = 0
+            for (let i=0;i<datas.length;i++){
+                if (Math.abs(datas[i].offsetTop - currentY)<Math.abs(datas[index].offsetTop - currentY)){
+                    index = i
+                }
+            }
+            let  aTags = document.querySelectorAll('.topNav>nav>ul>li')
+            console.log(aTags)
+            for (let i = 0;i<aTags.length;i++){
+                aTags[i].classList.remove('highLight')
+            }
+            aTags[index].classList.add('highLight')
+
+        }
+
+        function scrollerSkillAnimate(){
+
         }
 
         let liTags = document.querySelectorAll('#topNavFix nav>ul>li')
@@ -261,7 +286,6 @@
                     .start();
             }
         }
-
         function animate(time) {
             requestAnimationFrame(animate);
             TWEEN.update(time);
