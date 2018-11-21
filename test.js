@@ -39,3 +39,30 @@ testArr.Each(function (key, value) {
 })
 
 
+//students 按分数的高低从大到小排列
+var students = ['小明','小红','小花']
+var scores = { 小明: 59, 小红: 99, 小花: 80 }
+students.sort(function(x,y){
+    return scores[y]-scores[x]
+})
+console.log(students)
+
+// [4,16,36,64] 得到下面的结果
+var a = [1,2,3,4,5,6,7,8,9]
+let resulta = a.filter(function(x){
+    return x%2 === 0
+}).map(function (y) {
+    return y*y
+})
+console.log(resulta)
+
+//计算所有奇数的和
+var dd = [1,2,3,4,5,6,7,8,9]
+let resultb = dd.reduce(function(sum,n){
+    if(n%2 === 1){
+        return sum+n
+    }else{
+        return sum
+    }
+},0)
+console.log(resultb)
