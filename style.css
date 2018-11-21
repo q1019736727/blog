@@ -1,28 +1,35 @@
-.clearfix::after{
+.clearfix::after {
     content: '';
     display: block;
     clear: both;
 }
-body{
+
+body {
     background-color: #efefef;
 }
-*,ul,ol{
+
+*{
     margin: 0;
     padding: 0;
 }
-a{
+
+a {
     text-decoration: none;
 }
-h2{
+
+h2 {
     font-weight: normal;
 }
+
 .icon {
-    width: 1em; height: 1em;
+    width: 1em;
+    height: 1em;
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
- }
-.topNav{
+}
+
+.topNav {
     position: fixed;
     width: 100%;
     padding: 5px 0 20px 0;
@@ -30,39 +37,46 @@ h2{
     z-index: 1;
     color: #c2c4c6;
 }
-.topNav.activity{
+
+.topNav.activity {
     background-color: #fff;
     box-shadow: 1px 2px 4px rgba(200, 200, 200, 0.6);
     padding: 0 0 15px 0;
     color: #3d4451;
 }
-.topNav .logo{
+
+.topNav .logo {
     float: left;
     padding-top: 17px;
     padding-left: 15px;
 }
-.topNav .logo .RS{
+
+.topNav .logo .RS {
     color: #e5686e;
     font-size: 22px;
     font-family: 'Arial Black';
 }
-.topNav .logo .card{ 
+
+.topNav .logo .card {
     color: #9a9da2;
     font-size: 22px;
     font-family: 'Arial Black';
 }
-.topNav ul{
+
+.topNav ul {
     float: right;
     padding-top: 20px;
 }
-.topNav ul li{
+
+.topNav ul li {
     float: left;
     list-style: none;
     padding-left: 17px;
     padding-right: 17px;
     position: relative;
 }
-.topNav ul li a{
+
+.topNav ul li a {
     list-style: none;
     text-decoration: none;
     color: inherit;
@@ -73,7 +87,8 @@ h2{
     border-top: 3px solid transparent;
     position: relative;
 }
-.topNav ul li .menuList{
+
+.topNav ul li .menuList {
     padding-top: 0;
     position: absolute;
     left: 0;
@@ -82,32 +97,36 @@ h2{
     display: none;
     background: white;
     padding: 10px 20px 10px 0px;
-    box-shadow: 2px 2px 2px rgba(200,200,200,0.6);
+    box-shadow: 2px 2px 2px rgba(200, 200, 200, 0.6);
 }
-.topNav ul li .menuList.menuActiviyt{
+
+.topNav ul li .menuList.menuActiviyt {
     display: block;
     animation: menuMove 0.3s linear;
 }
+
 @keyframes menuMove {
-    0%{
+    0% {
         left: -100%;
         opacity: 0;
     }
-    100%{
+    100% {
         left: 0;
         opacity: 1;
     }
 }
-.topNav ul li .menuList li{
+
+.topNav ul li .menuList li {
     white-space: nowrap;
     margin-top: 10px;
 }
+
 .topNav ul li .menuList li:hover {
     cursor: pointer;
 }
+
 .topNav ul li:hover a::after,
-.topNav ul li.highLight a::after
-{
+.topNav ul li.highLight a::after {
     content: '';
     position: absolute;
     display: block;
@@ -119,15 +138,16 @@ h2{
     animation: menuTra 0.2s linear;
 }
 
-@keyframes menuTra{
-    0%{
+@keyframes menuTra {
+    0% {
         width: 0%;
     }
-    100%{
+    100% {
         width: 100%;
     }
 }
-.banner{
+
+.banner {
     background-image: url(./Img/bg.jpg);
     height: 515px;
     /* 居中 */
@@ -135,39 +155,46 @@ h2{
     /* 背景图片自适应 */
     background-size: cover;
 }
-.banner .mask{
+
+.banner .mask {
     background-color: rgba(0, 0, 0, 0.8);
     height: 515px;
 }
-.userCard{
+
+.userCard {
     max-width: 930px;
     margin: 0 auto;
     background-color: #ffffff;
-    box-shadow: 1px 1px 11px 3px rgba(0,0,0,0.24);
+    box-shadow: 1px 1px 11px 3px rgba(0, 0, 0, 0.24);
 }
-.userCard .pictureAndText .picture{
+
+.userCard .pictureAndText .picture {
     float: left;
     margin-top: 56px;
     padding-left: 50px;
     padding-bottom: 50px;
 }
-.userCard .pictureAndText .picture img{
+
+.userCard .pictureAndText .picture img {
     width: 294px;
     height: 318px;
 }
-.userCard  .pictureAndText .text{
+
+.userCard .pictureAndText .text {
     float: left;
     padding-top: 56px;
     margin-left: 65px;
 }
-.userCard  .pictureAndText .text .welcome{
+
+.userCard .pictureAndText .text .welcome {
     padding: 4px 12px;
     background-color: #e6686e;
     color: white;
     position: relative;
     font-weight: bold;
 }
-.userCard  .pictureAndText .text .welcome .triangle{
+
+.userCard .pictureAndText .text .welcome .triangle {
     border: 10px solid transparent;
     width: 0px;
     height: 0px;
@@ -176,31 +203,38 @@ h2{
     position: absolute;
     left: 5px;
 }
-.userCard  .pictureAndText .text h1{
+
+.userCard .pictureAndText .text h1 {
     margin-top: 25px;
     color: #3d4451;
 }
-.userCard  .pictureAndText .text p{
+
+.userCard .pictureAndText .text p {
     color: #3d4451;
 }
 
-.userCard  .pictureAndText .text hr{
-   margin: 23px 0;
-   background-color: #dedede;
-   border-width: 0px;
-   height: 1px;
-   width: 471px;
+.userCard .pictureAndText .text hr {
+    margin: 23px 0;
+    background-color: #dedede;
+    border-width: 0px;
+    height: 1px;
+    width: 471px;
 }
-.userCard  .pictureAndText .text dt{
-  float: left;
-  width: 30%;
-  font-weight: bold;
-  padding: 5px 0;
-  /* border: 1px solid green; */
-  box-sizing: border-box;
 
- }
- .userCard  .pictureAndText .text dd{
+.userCard .pictureAndText .text dt {
+    /*chrome和firefox的dt和dl默认高度不一样，统一一下高度，以免错位*/
+    line-height: 32px;
+    float: left;
+    width: 30%;
+    font-weight: bold;
+    padding: 5px 0;
+    /* border: 1px solid green; */
+    box-sizing: border-box;
+
+}
+
+.userCard .pictureAndText .text dd {
+    line-height: 32px;
     float: left;
     width: 70%;
     color: #9da0a7;
@@ -209,22 +243,26 @@ h2{
     box-sizing: border-box;
 
 }
-.userCard .media{
+
+.userCard .media {
     background-color: #e6686e;
     text-align: center;
     padding: 15px 0;
 }
-.userCard .media a{
+
+.userCard .media a {
     display: inline-block;
     border-radius: 50px;
     height: 40px;
     width: 40px;
     margin: 0 15px;
 }
-.userCard .media a:hover{
+
+.userCard .media a:hover {
     background-color: #cf5d63;
 }
-.userCard .media svg{
+
+.userCard .media svg {
     width: 20px;
     height: 20px;
     fill: white;
@@ -232,14 +270,17 @@ h2{
     vertical-align: top;
     padding: 10px 0;
 }
-body > main{
+
+body > main {
     margin-top: -350px;
 }
-body > main .downloadResumeWrapper{
+
+body > main .downloadResumeWrapper {
     text-align: center;
 
 }
-body > main .downloadResumeWrapper .downloadResume{
+
+body > main .downloadResumeWrapper .downloadResume {
     padding: 21px 55px;
     border: 1px solid #cbcdcf;
     border-radius: 3px;
@@ -250,37 +291,43 @@ body > main .downloadResumeWrapper .downloadResume{
     font-size: 14px;
     transition: all 0.3s ease;
 }
-body > main .downloadResumeWrapper .downloadResume:hover{
-    box-shadow: 0px 6px 13px 3px rgba(0,0,0,0.23);
+
+body > main .downloadResumeWrapper .downloadResume:hover {
+    box-shadow: 0px 6px 13px 3px rgba(0, 0, 0, 0.23);
 }
-body  main .selfIntroduction{
+
+body main .selfIntroduction {
     max-width: 930px;
     text-align: center;
     font-size: 14px;
     font-family: kai;
     margin: 10px auto;
 }
-.skills{
+
+.skills {
     text-align: center;
     max-width: 930px;
     margin: 0 auto;
     margin-top: 150px;
 }
 
-.skills h2{
+.skills h2 {
     font-weight: bold;
     font-size: 30px;
 }
-.skills .skillWrapper{
+
+.skills .skillWrapper {
     margin-top: 32px;
     background-color: #ffffff;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.38);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.38);
 }
-.skills .skillWrapper ol{
+
+.skills .skillWrapper ol {
     list-style: none;
     padding: 42px 50px 8px 50px;
 }
-.skills .skillWrapper ol li{
+
+.skills .skillWrapper ol li {
     font-size: 13px;
     color: #424855;
     float: left;
@@ -289,8 +336,9 @@ body  main .selfIntroduction{
     box-sizing: border-box;
     padding-right: 40px;
 }
+
 /* 偶数 */
-.skills .skillWrapper ol li:nth-child(even){
+.skills .skillWrapper ol li:nth-child(even) {
     float: right;
 }
 
@@ -302,46 +350,122 @@ body  main .selfIntroduction{
     margin-top: 5px;
     overflow: hidden;
 }
-.skills .skillWrapper ol li .bar .barProccess{
+
+.skills .skillWrapper ol li .bar .barProccess {
     height: 100%;
-    width: 70%;
     background-color: #e6686e;
     border-radius: 2px;
-    transform: translateX(-100%);
-    transition: all 0.3s;
 }
+
+
+@keyframes animation0 {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 90%;
+    }
+}
+@keyframes animation1 {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 70%;
+    }
+}
+@keyframes animation2 {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 70%;
+    }
+}
+@keyframes animation3 {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 60%;
+    }
+}
+@keyframes animation4 {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 80%;
+    }
+}
+@keyframes animation5 {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 85%;
+    }
+}
+
 .skills .skillWrapper ol li .bar .barProccess,
-.skills .skillWrapper ol li .bar .barProccess.activie
-{
-    transform: translateX(0);
+.skills .skillWrapper ol li .bar .barProccess.activie0 {
+    width: 90%;
+    animation: animation0 linear 0.3s;
 }
-.portfolio{
+.skills .skillWrapper ol li .bar .barProccess.activie1 {
+    width: 70%;
+    animation: animation1 linear 0.3s;
+}
+.skills .skillWrapper ol li .bar .barProccess.activie2 {
+    width: 70%;
+    animation: animation2 linear 0.3s;
+}
+.skills .skillWrapper ol li .bar .barProccess.activie3 {
+    width: 60%;
+    animation: animation3 linear 0.3s;
+}
+.skills .skillWrapper ol li .bar .barProccess.activie4 {
+    width: 80%;
+    animation: animation4 linear 0.3s;
+}
+.skills .skillWrapper ol li .bar .barProccess.activie5 {
+    width: 85%;
+    animation: animation5 linear 0.3s;
+}
+
+.portfolio {
     max-width: 930px;
     margin: 150px auto;
     text-align: center;
 }
-.portfolio h2{
+
+.portfolio h2 {
     font-weight: bold;
     font-size: 30px;
 }
-.portfolio .proccessWrapper{
+
+.portfolio .proccessWrapper {
     margin-top: 40px;
 }
-.portfolio .proccessWrapper ol{
+
+.portfolio .proccessWrapper ol {
     list-style: none;
     display: inline-block;
     vertical-align: top;
 }
-.portfolio .proccessWrapper li{
+
+.portfolio .proccessWrapper li {
     float: left;
     margin-left: 80px;
     font-size: 16px;
     cursor: pointer;
 }
-.portfolio .proccessWrapper li:nth-child(1){
+
+.portfolio .proccessWrapper li:nth-child(1) {
     margin-left: 0px;
 }
-.portfolio .proccessWrapper .bar{
+
+.portfolio .proccessWrapper .bar {
     height: 5px;
     background-color: #fff;
     margin: 0 auto;
@@ -349,14 +473,16 @@ body  main .selfIntroduction{
     width: 290px;
     border-radius: 2px;
 }
-.portfolio .proccessWrapper .bar .barProccess.state1{
+
+.portfolio .proccessWrapper .bar .barProccess1.state1 {
     height: 100%;
     background: #d67071;
     width: 33px;
     border-radius: 2px;
     transition: all 0.3s;
 }
-.portfolio .proccessWrapper .bar .barProccess.state2{
+
+.portfolio .proccessWrapper .bar .barProccess1.state2 {
     height: 100%;
     background: #d67071;
     width: 34px;
@@ -364,7 +490,8 @@ body  main .selfIntroduction{
     margin-left: 112px;
     transition: all 0.3s;
 }
-.portfolio .proccessWrapper .bar .barProccess.state3{
+
+.portfolio .proccessWrapper .bar .barProccess1.state3 {
     height: 100%;
     background: #d67071;
     width: 64px;
@@ -372,34 +499,38 @@ body  main .selfIntroduction{
     margin-left: 226px;
     transition: all 0.3s;
 }
-.portfolio .portfolioPictrue{
+
+.portfolio .portfolioPictrue {
     height: 569px;;
     margin-top: 30px;
     position: relative;
 }
-.portfolio .portfolioPictrue .jb1{
+
+.portfolio .portfolioPictrue .jb1 {
     background-image: url(./Img/jb1.jpg);
     height: 569px;
     width: 607px;
     position: absolute;
-    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.19);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.19);
 }
-.portfolio .portfolioPictrue .jb2{
+
+.portfolio .portfolioPictrue .jb2 {
     background-image: url(./Img/jb2.jpg);
     height: 273px;
     width: 289px;
     position: absolute;
     left: 637px;
-    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.19);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.19);
 }
-.portfolio .portfolioPictrue .jb3{
+
+.portfolio .portfolioPictrue .jb3 {
     background-image: url(./Img/jb3.jpg);
     height: 273px;
     width: 289px;
     position: absolute;
     left: 637px;
     top: 297px;
-    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.19);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.19);
 }
 
 
