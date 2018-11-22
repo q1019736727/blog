@@ -66,3 +66,21 @@ let resultb = dd.reduce(function(sum,n){
     }
 },0)
 console.log(resultb)
+
+console.log('\n\n\n')
+
+//作用域
+var cc = 1
+function cf() {
+    var cc = 2
+    console.log(cc)
+    cf2()
+    function cf2() {
+        var cc =3
+        console.log(cc)
+    }
+}
+cf.call()
+console.log(cc)
+
+
