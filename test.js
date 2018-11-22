@@ -72,7 +72,8 @@ console.log('\n\n\n')
 //作用域
 var cc = 1
 function cf() {
-    var cc = 2
+    var cc = 2//这儿写了var就是新声明的
+    //cc = 4 //这儿如果没写var,就代表最上面的cc
     console.log(cc)
     cf2()
     function cf2() {
