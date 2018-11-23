@@ -24,30 +24,31 @@
 <script type="text/javascript">
 
     //自定义jQuery
-    window.jQuery = function(queryStr) {
+    window.cyDom = function(queryStr) {
 
-        let nodes
+        let nodes//设定要返回的对象
 
+        //根据外部查询的内容返回对象
         if (typeof queryStr) {
-            nodes = document.querySelectorAll(queryStr)
+            nodes = document.querySelectorAll(queryStr)//如果是字符串类型,查询并返回查询结果
         }else if (queryStr instanceof Node) {
-            nodes = {
+            nodes = {//如果是个节点类型，返回长度为1的伪数组，这儿返回伪数组主要是返回统一结果
                 0:queryStr,
                 length: 1
             }
         }
-        nodes.addClass = function(className){
+        nodes.addClass = function(className){//根据名称添加class
             for (let i=0;i<nodes.length;i++){
                 nodes[i].classList.add(className)
             }
         }
 
         nodes.text = function (textStr) {
-            if (typeof textStr === 'string'){//设置字符
+            if (typeof textStr === 'string'){//是否是字符类型,是的话我们就将它设为元素文本内容
                 for (let i=0;i<nodes.length;i++){
                     nodes[i].textContent = textStr
                 }
-            }else if (textStr === undefined){//返回字符
+            }else if (textStr === undefined){//如果什么也没有传入,我们就返回元素的文本内容
                 let textArr = []
                 for (let i=0;i<nodes.length;i++){
                     textArr.push(nodes[i].textContent)
@@ -58,11 +59,12 @@
 
         return nodes
     }
-    var node = jQuery('ul>li')
+    //调用方法
+    var node = cyDom('ul>li')
     node.addClass('red')
     console.log(node.text())
     node.text('我是设置的值')
-    console.log(jQuery('#item5'))
+    console.log(cyDom('#item5'))
 
     var div = document.getElementById('x')
     var $div = $('#x')
