@@ -19,6 +19,7 @@
     <li id="item4">选项4</li>
     <li id="item5">选项5</li>
 </ul>
+<div id=x></div>
 
 <script type="text/javascript">
 
@@ -63,7 +64,9 @@
     node.text('我是设置的值')
     console.log(jQuery('#item5'))
 
-
+    var div = document.getElementById('x')
+    var $div = $('#x')
+    console.log(div,$div)
 </script>
 </body>
 </html>
