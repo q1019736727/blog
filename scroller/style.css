@@ -1,0 +1,13 @@
+.window{
+    width: 300px;
+    overflow: hidden;
+    margin: auto;
+}
+.window .bannerWrapper{
+    display: flex;
+    align-items: flex-start;
+    transiton:all 0.3s;
+}
+.window .bannerWrapper img{
+}
+
