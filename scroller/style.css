@@ -6,8 +6,15 @@
 .window .bannerWrapper{
     display: flex;
     align-items: flex-start;
-    transiton:all 0.3s;
+    transition: all 0.5s;
 }
 .window .bannerWrapper img{
+    vertical-align: top;
+}
+.window>div>span:hover{
+    cursor: pointer;
+}
+.red{
+    color: red;
 }
 
