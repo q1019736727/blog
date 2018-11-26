@@ -5,7 +5,7 @@
 }
 .window .bannerWrapper{
     display: flex;
-    align-items: flex-start;
+    align-items: start;
     transition: all 0.5s;
 }
 .window .bannerWrapper img{

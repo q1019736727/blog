@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.wind{
+    width: 500px;
+    margin: 100px auto;
+    overflow: hidden;
+}
+.wind .images{
+    transition: all 0.3s;
+    position: relative;
+}
+.wind .images img{
+    vertical-align: top;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: absolute;
+}
+.wind .images img.enter {
+    transform: translateX(0);
+    position: absolute;
+
+}
+.wind .images img.leave {
+    transform: translateX(-100%);
+    position: absolute;
+
+}
+.wind .images img.stac {
+    transform: translateX(100%);
+}
