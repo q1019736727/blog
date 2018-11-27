@@ -14,17 +14,17 @@ setInterval(()=>{
 },3000)
 
 function leave($ele) {
-    $ele.removeClass('enter').addClass('leave')
+    $ele.removeClass('enter stac').addClass('leave')
     return $ele
 }
 
 function stac($ele) {
-    $ele.removeClass('leave').addClass('stac')
+    $ele.removeClass('leave enter').addClass('stac')
     return $ele
 }
 
 function enter($ele) {
-    $ele.removeClass('stac').addClass('enter')
+    $ele.removeClass('stac leave').addClass('enter')
     return $ele
 }
 
