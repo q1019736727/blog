@@ -29,3 +29,22 @@
 .wind .images img.stac {
     transform: translateX(100%);
 }
+.page {
+    position: relative;
+    width: 500px;
+    height: 22px;
+    margin: -90px auto;
+}
+.page span:hover{
+    cursor: pointer;
+}
+.page span:nth-child(1){
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.page span:nth-child(2){
+    position: absolute;
+    right: 0;
+    top: 0;
+}
