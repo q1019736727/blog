@@ -1,0 +1,130 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.topNav{
+    display: flex;
+    justify-content: space-between;
+    background: #eee;
+    height: 50px;
+}
+.topNav .logo{
+    width: 90px;
+    height: 50px;
+    background: #000;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
+.topNav .menuList ul{
+    display: flex;
+    flex-direction: row-reverse;
+}
+@media (max-width: 420px) {
+    .topNav .menuList{
+        display: none;
+    }
+}
+.topNav .menuList ul li {
+    line-height: 50px;
+    padding-right: 20px;
+}
+#menuBtn{
+    width: 30px;
+    height: 100%;
+    display: none;
+}
+#menuBtn:hover{
+    cursor: pointer;
+}
+@media (max-width: 420px) {
+    #menuBtn{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        margin-right: 10px;
+    }
+}
+#menuBtn div{
+    width: 100%;
+    height: 2px;
+    background: #000;
+}
+#menuBtn div:nth-child(1){
+    margin-top: 10px;
+}
+#menuBtn div:nth-child(3){
+    margin-bottom: 10px;
+}
+.banner{
+    width: 800px;
+    height: 300px;
+    background: grey;
+    margin: auto;
+    background:center url("http://img.zcool.cn/community/012e2f59c90717a8012053f8536397.jpg@2o.jpg") no-repeat;
+    background-size: cover;
+}
+@media (max-width: 420px) {
+    .banner{
+        width: auto;
+    }
+}
+
+.center{
+    width: 800px;
+    margin: 5px auto;
+}
+.center .collection{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto -5px;
+}
+.center .collection .child{
+    width: 192.5px;
+    height: 192.5px;
+    background: gray;
+    margin: 5px;
+}
+@media (max-width: 420px){
+    .center{
+        width: auto;
+        overflow: hidden;
+    }
+    .center .collection .child{
+        /*margin: auto -2.7px;*/
+        width: 100px;
+        height: 100px;
+    }
+}
+.artWrapper{
+    width: 800px;
+    height: 100px;
+    margin: auto;
+    display: flex;
+}
+.artWrapper .ad1{
+    height: 100%;
+    width: calc(30% - 5px);
+    margin-right: 5px;
+    background:center url("http://img1.imgtn.bdimg.com/it/u=1684638611,3437407896&fm=200&gp=0.jpg") no-repeat;
+    background-size: cover;
+}
+.artWrapper .ad2{
+    height: 100%;
+    width: 70%;
+    background:center url("http://img0.imgtn.bdimg.com/it/u=2246882595,2179969465&fm=26&gp=0.jpg") no-repeat;
+    background-size: cover;
+}
+
+@media (max-width: 420px) {
+    .artWrapper {
+        flex-direction: column;
+        height: 150px;
+        width:auto;
+    }
+    .artWrapper .ad1,.artWrapper .ad2{
+        width: 100%;
+    }
+
+}
