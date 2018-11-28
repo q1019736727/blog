@@ -92,9 +92,8 @@
         overflow: hidden;
     }
     .center .collection .child{
-        /*margin: auto -2.7px;*/
-        width: 100px;
-        height: 100px;
+        width: calc(50% - 10px);
+        height: 192.5px;
     }
 }
 .artWrapper{
