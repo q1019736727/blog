@@ -6,10 +6,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./min.js"></script>
+    <link rel="stylesheet" href="./style.css">
     <style>
-        *{
-            margin: 0;
-            padding: 0;
+        body{
+            font-size: 16px;
         }
         .clearfix::after{
             content: '';
@@ -22,16 +22,20 @@
             background: #eee;
             float: left;
             margin: 0.5rem 0.5rem;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            text-align: center;
+            line-height: 2rem;
         }
     </style>
     <title>rem示例</title>
 </head>
 <body>
 <div class="wrapper clearfix">
-    <div class="child"></div>
-    <div class="child"></div>
-    <div class="child"></div>
-    <div class="child"></div>
+    <div class="child">item1</div>
+    <div class="child">item2</div>
+    <div class="child">item3</div>
+    <div class="child">item4</div>
 </div>
 </body>
 </html>
