@@ -4,6 +4,9 @@
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
+  &:focus{
+    outline: none;
+  }
 }
 .icon {
   width: 1em; height: 1em;
@@ -22,8 +25,42 @@
       height: 35px;
       width: 640px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
+      border: 1px solid #cccccc;
+      box-sizing: content-box;
+      &.active{
+        border: 1px solid #4b94fc;
+      }
+      input{
+        width: 460px;
+        line-height: 17px;
+        margin-left: 5px;
+        border: none;
+        font-size: 17px;
+      }
+      span{
+        font-size: 30px;
+        svg{
+          fill: #999999;
+        }
+        &:nth-child(1){
+          &::after{
+            content: '你好';
+            display: block;
+            width: 10px;
+            height: 5px;
+          }
+        }
+      }
+      button{
+        width: 100px;
+        height: 100%;
+        border: none;
+        background: #3988fb;
+        color: white;
+        font-size: 14px;
+      }
     }
 
   }
