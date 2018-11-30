@@ -1,0 +1,38 @@
+*{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.search{
+  height: 300px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .wrapper{
+    .center{
+      height: 35px;
+      width: 640px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+  }
+}
+.load{
+  height: 300px;
+  border: 1px solid #ddd;
+}
+.button{
+  height: 300px;
+  border: 1px solid #ddd;
+}
