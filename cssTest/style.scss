@@ -1,3 +1,17 @@
+///////////////这儿是rem和设计图的比例适配//////////////////
+@function px( $px ){
+  @return $px/$designWidth*10 + rem;
+}
+$designWidth : 750;//设计图宽度
+.child{
+  width: px(375);
+  height: px(160);
+  margin: px(40) px(40);
+  border: 1px solid red;
+  float: left;
+  font-size: 1.2em;
+}
+/////////////////////////////////
 *{
   padding: 0;
   margin: 0;
