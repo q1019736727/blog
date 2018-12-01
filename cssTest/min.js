@@ -13,3 +13,10 @@ $('#search').on('click',()=>{
     a.target = '_blank'
     a.click()
 })
+
+$('#btn').on('click',()=>{
+    $('#btn>.mask').addClass('active')
+})
+$('#btn>.mask').on('transitionend',(ele)=>{
+    $(ele.currentTarget).removeClass('active')
+})
