@@ -11,10 +11,65 @@
     <link rel="stylesheet" media="screen and (max-width:500px)" href="./mobile.css">
     <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript" src="./gbk.js" charset="GBK"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .wrapper{
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+        .wrapper .btn{
+            padding: 15px;
+        }
+        .wrapper span{
+            border: 1px solid red;
+            border-radius: 4px;
+            padding: 5px;
+            margin-left: 15px;
+            position: relative;
+            display: none;
+        }
+        .wrapper span.active{
+            display: inline-block;
+        }
+        .wrapper span::after{
+            content: '';
+            display: block;
+            border: 12px solid transparent;
+            border-right: 12px solid red;
+            position: absolute;
+            left: -24px;
+            top: 5px;
+        }
+
+
+    </style>
 </head>
 <body>
-    <svg style="width: 100vw;height: 100vh">
-        <circle cx="50%" cy="50%" r="50" fill="gray"></circle>
-    </svg>
+    <!--<svg style="width: 100vw;height: 100vh">-->
+        <!--<circle cx="50%" cy="50%" r="50" fill="gray"></circle>-->
+    <!--</svg>-->
+
+    <div class="wrapper">
+        <button class="btn">pop</button>
+        <span>hello</span>
+    </div>
+    <script>
+        var $span =  $('.wrapper>span')
+        $('.wrapper>.btn').on('click',()=>{
+            $span.hasClass('active') ? $span.removeClass('active'):$span.addClass('active')
+        })
+        $('.wrapper').on('click',(ele)=>{
+            ele.stopPropagation()
+        })
+        document.addEventListener('click',()=>{
+            $span.removeClass('active')
+        })
+
+    </script>
 </body>
 </html>
