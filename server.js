@@ -46,7 +46,12 @@ var server = http.createServer(function(request, response){
       response.setHeader('Content-Type','text/json; charset=utf-8')
       response.write('{"note":{"name":"frank","age":"18"}}')
       response.end()
-  } else{
+  }else if(path == '/cy'){
+      response.setHeader('Access-Control-Allow-Origin','http://127.0.0.1:8080')//解决跨域
+      response.setHeader('Content-Type','text/json; charset=utf-8')
+      response.write('{"optional":{"name":"ChiuYung","age":"23","professional":"前端高级开发工程师"},"status":"1","message":"请求成功"}')
+      response.end()
+  }else{
       response.statusCode = 404
       response.end()
   }

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>仿jQueryAjax请求</title>
+</head>
+<body>
+<p style="color: red;">请求前请将同层级的server.js的Node服务器打开</p>
+<button id="btn">发送Ajax请求</button>
+
+<script>
+    window.jQuery = function(ele) {
+        let node = ele
+        node.addClass = function(){}
+        node.text = function(){}
+        return node
+    }
+    jQuery.ajax = function(optional){
+
+        let url = optional.url
+        let method = optional.method
+        let data = optional.data
+        let successFn = optional.successFn
+        let failFn = optional.failFn
+        let headers = optional.headers
+
+        let request = new XMLHttpRequest()
+        request.open(method,url)
+        for (let key in headers){
+            request.setRequestHeader(key,headers[key])
+        }
+        request.onreadystatechange = ()=>{
+            if (request.readyState === 4){
+                if (request.status >= 200 && request.status < 300){
+                    successFn.call(undefined,request.responseText)
+                }else if (request.status > 400){
+                    failFn.call(undefined,request)
+                }
+                
+            }
+        }
+        request.send(data)
+
+    }
+    window.$ = window.jQuery
+
+   btn.onclick = ()=>{
+       $.ajax({
+           url:'http://127.0.0.1:8888/cy',
+           method:'post',
+           data:'name=fangfang',
+           successFn:(response)=>{
+               console.log(response)
+           },
+           failFn:()=>{
+
+           }
+       })
+   }
+
+</script>
+</body>
+</html>
