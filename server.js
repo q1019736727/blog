@@ -19,7 +19,13 @@ var server = http.createServer(function(request, response){
 
   /******** 从这里开始看，上面不要看 ************/
 
-  if(path == '/style.css'){
+  if (path == '/'){
+    let string = fs.readFileSync('./index.html')
+      response.statusCode = 200
+      response.setHeader('Content-Type','text/html')
+      response.write(string)
+      response.end()
+  }else if(path == '/style.css'){
       response.setHeader('Content-Type','text/css; charset=utf-8')
       response.write('body{background-color: gray}')
       response.end()
@@ -36,7 +42,11 @@ var server = http.createServer(function(request, response){
     '<script src="/main.js"></script>'+
     '</body></html>')
     response.end()
-  }else{
+  }else if(path == '/json'){
+      response.setHeader('Content-Type','text/json; charset=utf-8')
+      response.write('{"note":{"name":"frank","age":"18"}}')
+      response.end()
+  } else{
       response.statusCode = 404
       response.end()
   }
