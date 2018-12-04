@@ -18,14 +18,17 @@
         node.text = function(){}
         return node
     }
-    jQuery.ajax = function(optional){
+    jQuery.ajax = function({url,method,data,successFn,failFn,headers}){//这种解构更快
 
-        let url = optional.url
-        let method = optional.method
-        let data = optional.data
-        let successFn = optional.successFn
-        let failFn = optional.failFn
-        let headers = optional.headers
+        // let url = optional.url
+        // let method = optional.method
+        // let data = optional.data
+        // let successFn = optional.successFn
+        // let failFn = optional.failFn
+        // let headers = optional.headers
+
+        //ES6解构赋值(等价于上面6行)
+        // let{url,method,data,successFn,failFn,headers} = optional
 
         let request = new XMLHttpRequest()
         request.open(method,url)
