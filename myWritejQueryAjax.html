@@ -18,51 +18,98 @@
         node.text = function(){}
         return node
     }
-    jQuery.ajax = function({url,method,data,successFn,failFn,headers}){//这种解构更快
+    //第一种没有Promise的方式
+   //  jQuery.ajax = function({url,method,data,successFn,failFn,headers}){//这种解构更快
+   //
+   //      // let url = optional.url
+   //      // let method = optional.method
+   //      // let data = optional.data
+   //      // let successFn = optional.successFn
+   //      // let failFn = optional.failFn
+   //      // let headers = optional.headers
+   //
+   //      //ES6解构赋值(等价于上面6行)
+   //      // let{url,method,data,successFn,failFn,headers} = optional
+   //
+   //      let request = new XMLHttpRequest()
+   //      request.open(method,url)
+   //      for (let key in headers){
+   //          request.setRequestHeader(key,headers[key])
+   //      }
+   //      request.onreadystatechange = ()=>{
+   //          if (request.readyState === 4){
+   //              if (request.status >= 200 && request.status < 300){
+   //                  successFn.call(undefined,request.responseText)
+   //              }else if (request.status > 400){
+   //                  failFn.call(undefined,request)
+   //              }
+   //
+   //          }
+   //      }
+   //      request.send(data)
+   //
+   //  }
+   //  window.$ = window.jQuery
+   //
+   // btn.onclick = ()=>{
+   //     $.ajax({
+   //         url:'http://127.0.0.1:8888/cy',
+   //         method:'post',
+   //         data:'name=fangfang',
+   //         successFn:(response)=>{
+   //             console.log(response)
+   //         },
+   //         failFn:()=>{
+   //
+   //         }
+   //     })
+   // }
 
-        // let url = optional.url
-        // let method = optional.method
-        // let data = optional.data
-        // let successFn = optional.successFn
-        // let failFn = optional.failFn
-        // let headers = optional.headers
-
-        //ES6解构赋值(等价于上面6行)
-        // let{url,method,data,successFn,failFn,headers} = optional
-
-        let request = new XMLHttpRequest()
-        request.open(method,url)
-        for (let key in headers){
-            request.setRequestHeader(key,headers[key])
-        }
-        request.onreadystatechange = ()=>{
-            if (request.readyState === 4){
-                if (request.status >= 200 && request.status < 300){
-                    successFn.call(undefined,request.responseText)
-                }else if (request.status > 400){
-                    failFn.call(undefined,request)
-                }
-                
+    //第二种(有Promise的方式)
+     jQuery.ajax = function({url,method,data,successFn,failFn,headers}){
+        return new Promise(function(resolve, reject){
+            let request = new XMLHttpRequest()
+            request.open(method,url)
+            for (let key in headers){
+                request.setRequestHeader(key,headers[key])
             }
-        }
-        request.send(data)
+            request.onreadystatechange = ()=>{
+                if (request.readyState === 4){
+                    if (request.status >= 200 && request.status < 300){
+                        resolve.call(undefined,request.responseText)
+                    }else if (request.status > 400){
+                        reject.call(undefined,request)
+                    }
 
+                }
+            }
+            request.send(data)
+        })
+     }
+     window.$ = window.jQuery
+
+    btn.onclick = ()=>{
+        $.ajax({
+            url:'http://127.0.0.1:8888/cy',
+            method:'post',
+            data:'name=fangfang',
+        }).then((response)=>{
+            console.log(response)
+            return '请求成功啦'
+        },(error)=>{
+            console.log(error)
+        }).then((message)=>{
+            console.log(message)
+        })
     }
-    window.$ = window.jQuery
 
-   btn.onclick = ()=>{
-       $.ajax({
-           url:'http://127.0.0.1:8888/cy',
-           method:'post',
-           data:'name=fangfang',
-           successFn:(response)=>{
-               console.log(response)
-           },
-           failFn:()=>{
-
-           }
-       })
-   }
+    //Promise的本质
+    window.Promise = function(fn){
+        // ...
+        return {
+            then: function(){}
+        }
+    }
 
 </script>
 </body>
