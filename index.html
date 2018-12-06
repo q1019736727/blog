@@ -8,7 +8,8 @@
     <script src="//at.alicdn.com/t/font_906046_4rxu3asq18g.js"></script>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./CircleAnimation/style.css">
-    <script src="./test.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js"></script>
     <title>ChiuYung</title>
     <style>
         .loadWelcome {
@@ -179,131 +180,47 @@
 
     <section data-x class="portfolio" id="works">
         <h2>作品集</h2>
-        <div class="proccessWrapper" />
-        <ol class="clearfix">
-            <li id="portfolioAction1">所有</li>
-            <li id="portfolioAction2">框架</li>
-            <li id="portfolioAction3">混合框架</li>
-        </ol>
-        <div class="bar">
-            <div id="portfolioBar" class="barProccess1 state1">
-
+        <div class="JobScrollerWrapper">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <img class="swiper-slide" src="./Img/jb1.jpg">
+                    <img class="swiper-slide" src="./Img/jb2.jpg">
+                    <img class="swiper-slide" src="./Img/jb3.jpg">
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
             </div>
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        </div>
-        <div class="portfolioPictrue">
-            <div class="jb1"></div>
-            <div class="jb2"></div>
-            <div class="jb3"></div>
-        </div>
+        <script>
+            var mySwiper = new Swiper ('.swiper-container', {
+                direction: 'horizontal',
+                autoplay: {
+                    disableOnInteraction: false,
+                },
+                loop: true, // 循环模式选项
+                // 如果需要分页器
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+                // 如果需要前进后退按钮
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                // 如果需要滚动条
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                },
+            })
+        </script>
     </section>
-    <div style='height:100px'></div>
     <script src="https://cdn.bootcss.com/tween.js/r14/Tween.min.js"></script>
-    <script>
-        portfolioAction1.onclick = function () {
-            portfolioBar.className = "barProccess1 state1"
-        }
-        portfolioAction2.onclick = function () {
-            portfolioBar.className = "barProccess1 state2"
-        }
-        portfolioAction3.onclick = function () {
-            portfolioBar.className = "barProccess1 state3"
-        }
-        // setTimeout(function () {
-        //     siteWelcome.classList.add('hideWelcome')
-        //     document.documentElement.style.overflow = 'auto';//页面滑动
-        // }, 1000)
-        window.onscroll = function(){
-            if(window.scrollY > 0){
-                topNavFix.classList.add('activity')
-            }else{
-                topNavFix.classList.remove('activity')
-            }
-            highLight()
-            scrollerSkillAnimate()
-        }
-        function highLight(){
-            let datas = document.querySelectorAll('[data-x]')
-            let currentY  = window.scrollY
-            var index = 0
-            for (let i=0;i<datas.length;i++){
-                if (Math.abs(datas[i].offsetTop - currentY)<Math.abs(datas[index].offsetTop - currentY)){
-                    index = i
-                }
-            }
-            let  aTags = document.querySelectorAll('.topNav>nav>ul>li')
-            for (let i = 0;i<aTags.length;i++){
-                aTags[i].classList.remove('highLight')
-            }
-            aTags[index].classList.add('highLight')
-
-        }
-
-        //进度条动画
-        function scrollerSkillAnimate(){
-            let barProccess = document.getElementsByClassName('barProccess')
-            let skillWrapper = document.getElementsByClassName('skillWrapper')[0]
-            if ((window.screen.availHeight + window.scrollY) > (skillWrapper.offsetTop+200)){
-                for (let i = 0; i<barProccess.length;i++){
-                    barProccess[i].classList.add('activie'+ i)
-                }
-            }
-
-        }
-
-        let liTags = document.querySelectorAll('#topNavFix nav>ul>li')
-        for (let index = 0; index < liTags.length; index++) {
-            let lit = liTags[index]
-            lit.onmouseenter = function (ele) {
-                let ul = ele.currentTarget.getElementsByTagName('ul')[0]
-                if (ul){
-                    ul.classList.add('menuActiviyt')
-                }
-            }
-            lit.onmouseleave = function (ele) {
-                let ul = ele.currentTarget.getElementsByTagName('ul')[0]
-                if (ul) {
-                    ul.classList.remove('menuActiviyt')
-                }
-            }
-        }
-        //tween.js动画要求(获取处理器好坏)
-        requestAnimationFrame(animate);
-
-        let aTags = document.querySelectorAll('#topNavFix nav a')
-        for (var index = 0; index<aTags.length;index++){
-            let aEle = aTags[index]
-            aEle.onclick = function (ele) {
-                ele.preventDefault()
-                let currentEle = ele.currentTarget
-                let scrollerView = document.querySelector(currentEle.getAttribute('href'))
-
-                let currentTop = window.scrollY
-                let targetTop = scrollerView.offsetTop - 80
-                let s = targetTop - currentTop
-                var coords = {y:currentTop}
-                var t = Math.abs((s/100)*300)
-                if (t>500){t=500}
-                var tween = new TWEEN.Tween(coords)
-                    .to({y:targetTop},t)
-                    .easing(TWEEN.Easing.Quadratic.InOut)
-                    .onUpdate(function () {
-                        window.scroll(0,coords.y)
-                    })
-                    .start();
-            }
-        }
-        function animate(time) {
-            requestAnimationFrame(animate);
-            TWEEN.update(time);
-        }
-
-
-
-
-    </script>
-    <script src="//at.alicdn.com/t/font_906046_4rxu3asq18g.js"></script>
-
+    <script src="./HomeJS/homeScoller.js"></script>
+    <script src="./HomeJS/navMouseOver.js"></script>
+    <script src="./HomeJS/pageScroller.js"></script>
 </body>
 
 </html>

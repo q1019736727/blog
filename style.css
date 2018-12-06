@@ -532,6 +532,41 @@ body main .selfIntroduction {
     top: 297px;
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.19);
 }
+.JobScrollerWrapper .swiper-container {
+    max-width: 800px;
+    height: 600px;
+    padding-top: 40px;
+    z-index: 0;
+}
+.JobScrollerWrapper .swiper-slide{
+    background: white;
+}
+.JobScrollerWrapper .swiper-pagination-bullet-active{
+    background: #d67071;
+}
+.JobScrollerWrapper .swiper-button-prev,
+.JobScrollerWrapper .swiper-button-next{
+    border: none;
+    outline: none;
+    z-index: 0;
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
 
+.JobScrollerWrapper .swiper-button-prev{
+    position: relative;
+    top: -300px;
+    left: auto;
+    right: 30px;
+}
+.JobScrollerWrapper .swiper-button-next{
+    position: relative;
+    right: auto;
+    left: 97%;
+    top: -338px;
+
+}
 
 

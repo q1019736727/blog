@@ -18,11 +18,36 @@
             border-radius: 5px;
             box-shadow: 2px 2px 3px 1px rgba(0,123,230,0.4);
         }
+        html{
+            height: 150vh;
+        }
     </style>
 </head>
 <body>
-    <div>
+    <div id="box">
+        <button id="btn">按钮</button>
     </div>
-
+    <script>
+        let box = document.querySelector('#box')
+        var controller = {
+            view:null,
+            init:function (view) {
+                this.view = view
+                this.animation()
+            },
+            animation:function () {
+                btn.addEventListener('click',function () {
+                    console.log(this)
+                    this.action()
+                }.bind(this))
+            },
+            action: function () {
+                console.log('我是controller的方法')
+            }
+        }
+        controller.init(box)
+        //等价于
+        // controller.init.call(controller,box)
+    </script>
 </body>
 </html>

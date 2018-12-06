@@ -87,7 +87,6 @@ console.log(cc)
 
 console.log('\n\n\n')
 
-document.parentElement.children
 
 var testFunc = function(){
     console.log(arguments)
