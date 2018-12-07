@@ -568,5 +568,25 @@ body main .selfIntroduction {
     top: -338px;
 
 }
-
+.Message{
+    max-width: 930px;
+    margin: 130px auto;
+    text-align: center;
+}
+.Message ol{
+    list-style: none;
+    background: #ddd;
+    margin-top: 30px;
+    border-radius: 6px;
+}
+.Message ol li{
+    padding: 20px;
+}
+.Message h2 {
+    font-weight: bold;
+    font-size: 30px;
+}
+.Message #sendMessageForm{
+    margin-top: 30px;
+}
 
