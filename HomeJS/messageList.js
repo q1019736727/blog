@@ -1,6 +1,6 @@
 !function () {
 
-    let view = document.querySelector('.Message')
+    let view = View('.Message')
 
     var model = {
         init:function() {
