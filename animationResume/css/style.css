@@ -1,0 +1,13 @@
+*{margin: 0;padding: 0;}
+.token.selector,
+.token.comment,
+.token.property
+{
+    color: black;
+}
+body{
+    padding:15px;
+}
+#code{
+    float: left;
+}
