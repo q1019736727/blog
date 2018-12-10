@@ -8,6 +8,12 @@
 body{
     padding:15px;
 }
+#code-wrapper{
+    height: 100vh;
+    /*自动滚动*/
+    display: flex;
+}
 #code{
-    float: left;
+    width: 100%;
+    overflow: hidden;
 }

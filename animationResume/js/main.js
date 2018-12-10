@@ -31,7 +31,6 @@ let result = `/*
     }
  /* 现在我加点动画特效 */
     #code{
-       height:100%;
        width:50%;
        border: 1px solid gray;
        transform:rotateZ(360deg);
