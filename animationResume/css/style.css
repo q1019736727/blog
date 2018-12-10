@@ -1,19 +1,42 @@
-*{margin: 0;padding: 0;}
+*{margin: 0;padding: 0;box-sizing: border-box}
 .token.selector,
 .token.comment,
 .token.property
 {
     color: black;
 }
-body{
-    padding:15px;
-}
 #code-wrapper{
+    float: left;
+    width: 50%;
     height: 100vh;
     /*自动滚动*/
     display: flex;
 }
 #code{
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
+    margin: 15px;
+}
+#paperWrapper{
+    width: 50%;
+    padding: 15px;
+    float: right;
+    height: 100vh;
+    color: black;
+    display: flex;
+}
+.markdown-body{
+    background: white;
+    width: 100%;
+    padding: 15px;
+    height: 100%;
+    overflow: auto;
+}
+@keyframes breath {
+    0% {
+        box-shadow: 0 0 12px 2px rgba(100, 100, 100, 1)
+    }
+    100% {
+        box-shadow: 0 0 12px 2px rgba(100, 204, 204, 0.2)
+    }
 }
