@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册账号</title>
+    <style>
+        .loginWrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+<div class="loginWrapper">
+    <h2>注册</h2>
+    <form id="info">
+        <label>用户名</label>
+        <input type="text" name="username">
+        <label>密码</label>
+        <input type="password" name="password">
+        <label>确认密码</label>
+        <input type="password" name="passwordconfirm">
+        <input type="submit">
+    </form>
+
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $('#info').on('submit',(e)=>{
+        e.preventDefault()
+        let keyArr = ['username','password','passwordconfirm']
+        let data = {}
+        keyArr.forEach((value)=>{
+            data[value] = $('#info').find(`input[name=${value}]`).val()
+        })
+        console.log(data)
+        $.ajax({
+            url:'/signIn',
+            type:'post',
+            data: data,
+        }).done(function () {
+            window.location.href = './login'
+        })
+
+    })
+
+</script>
+</body>
+</html>
