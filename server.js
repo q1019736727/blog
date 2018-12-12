@@ -29,6 +29,20 @@ var server = http.createServer(function(request, response){
       response.setHeader('Content-Type','text/html ; charset=utf-8')
       response.write(string)
       response.end()
+  }else if(path === '/mainJs?version=1'){//模拟js数据量很大
+      let string = fs.readFileSync('./cookie/js/main.js','utf-8')
+      response.statusCode = 200
+      response.setHeader('Content-Type','text/javascript ; charset=utf-8')
+      response.setHeader('Cache-Control','max-age=31536000')//设置缓存一年(就是请求成功后就缓存，一年后再请求)
+      response.write(string)
+      response.end()
+  }else if(path === '/mainCss'){//模拟css数据量很大
+      let string = fs.readFileSync('./cookie/css/style.css','utf-8')
+      response.statusCode = 200
+      response.setHeader('Content-Type','text/css ; charset=utf-8')
+      response.setHeader('Cache-Control','max-age=31536000')//设置缓存一年(就是请求成功后就缓存，一年后再请求)
+      response.write(string)
+      response.end()
   }else if(path === '/login'){
       let string = fs.readFileSync('./cookie/login.html')
       response.statusCode = 200
