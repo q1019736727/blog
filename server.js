@@ -22,7 +22,7 @@ var server = http.createServer(function(request, response){
   if (path == '/'){
       let string = fs.readFileSync('./cookie/index.html','utf-8')//如果要读取string类型就要加utf8
       let cookies =  request.headers.cookie.split('=') // log-in-username=asd
-      string = string.replace('__username__',cookies[1])
+      string = string.replace('__username__',cookies[1]) // 如果存在cookie，则将标记函数替换为cookie
       response.statusCode = 200
       response.setHeader('Content-Type','text/html ; charset=utf-8')
       response.write(string)
