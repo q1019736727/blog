@@ -8,6 +8,7 @@ if(!port){
   process.exit(1)
 }
 
+let Sessions = []//用于储存用户信息
 var server = http.createServer(function(request, response){
   var parsedUrl = url.parse(request.url, true)
   var path = request.url 
@@ -23,7 +24,16 @@ var server = http.createServer(function(request, response){
       let string = fs.readFileSync('./cookie/index.html','utf-8')//如果要读取string类型就要加utf8
       if (request.headers.cookie) {
           let cookies =  request.headers.cookie.split('=') // log-in-username=asd
-          string = string.replace('__username__',cookies[1]) // 如果存在cookie，则将标记函数替换为cookie
+          var username = '未登录'
+          console.log('Sessions',Sessions)
+          Sessions.forEach((value)=>{
+              for(let key in value){
+                  username = value[key]
+              }
+          })
+          string = string.replace('__username__',username) // 如果存在cookie，则将标记函数替换为cookie
+      }else{
+          string = string.replace('__username__','未登录')
       }
       response.statusCode = 200
       response.setHeader('Content-Type','text/html ; charset=utf-8')
@@ -76,8 +86,11 @@ var server = http.createServer(function(request, response){
               }
           })
           if (isUser){
+              let sessionID = Math.random() * 1000000//生成随机key,避免用户知道自己服务器的id
+              let userInfo = {sessionID:readObj.username}
+              Sessions.push(userInfo)//存入服务器的Sessions
               response.statusCode = 200
-              response.setHeader('Set-Cookie', `log-in-username=${readObj.username}`)
+              response.setHeader('Set-Cookie', `log-in-username=${sessionID}`)
               response.setHeader('Content-Type','text/json ; charset=utf-8')
               response.write('{"msg":"登陆成功"}')
           } else {
