@@ -6,6 +6,7 @@ let view = new Vue({
             name:'九年义务教育',
             number: 2,
         },
+        number: 1,
         list:[{name:'我是第一',index:0},{name:'我是第二',index:1},{name:'我是第三',index:2}],
         selectIndex: 0
     },
