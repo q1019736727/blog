@@ -7,6 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-
+    <div id="app">
+        <p v-if="9<5">{{data1}}</p>
+        <p v-else-if="6>5">{{data2}}</p>
+        <p v-else>{{data3}}</p>
+    </div>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                data1:'111',
+                data2:'222',
+                data3:'333'
+            }
+        })
+    </script>
 </body>
 </html>
