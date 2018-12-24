@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.18-beta.0/vue.min.js"></script>
+    <title>watch监听</title>
+</head>
+<body>
+<div id="app">
+{{fullName}}
+</div>
+<script>
+    let view = new Vue({
+        el:'#app',
+        data:{
+            firstName:'Chiu',
+            lastName:'Yung',
+            fullName: 'Chiu Yung'
+        },
+        watch:{
+            firstName:function (value) {
+                this.fullName = value + ' ' + this.lastName
+            },
+            lastName: function (value) {
+                this.fullName = this.firstName + ' ' + value
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

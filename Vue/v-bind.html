@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.18-beta.0/vue.min.js"></script>
+    <style>
+        .red{
+            color:red;
+        }
+        .active{
+            background: #000;
+            width: 10px;
+            height: 20px;
+        }
+        .border{
+            border: 10px solid red;
+
+        }
+        .success{
+            color:  green;
+        }
+        .error{
+            border: 4px solid red;
+        }
+    </style>
+    <title>v-bind</title>
+</head>
+<body>
+<div id="app">
+    <!-- v-bind 简写 : -->
+    <div :class="styleName">红色的</div>
+    <div v-bind:class="styleName">红色的</div>
+
+
+    <img :src="url" alt="">
+
+
+    <!--对象语法  绑定class语法   键是类名  值是布尔-->
+    <div :class="{active: isActive,border: isBorder}"></div>
+
+
+    <!--数组语法 绑定class-->
+    <div :class="[success,error]">成功与失败</div>
+
+
+
+    <!--数组语法和对象语法混用-->
+    <div :class="[{active:isActive},error]"></div>
+
+    <!--style绑定-->
+    <div :style="{'color': styleName}">我是style</div>
+
+</div>
+<script>
+    let app = new Vue({
+        el:"#app",
+        data:{
+            styleName:'red',
+            url:'http://pjv07e7aa.bkt.clouddn.com/%20Memories.jpeg',
+            isActive: true,
+            isBorder: false,
+            success: 'success',
+            error: 'error'
+        }
+    })
+</script>
+</body>
+</html>

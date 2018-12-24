@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.18-beta.0/vue.min.js"></script>
+    <title>计算属性</title>
+</head>
+<body>
+<div id="app">
+    我是计算属性的结果{{arrayReverse}}<br>
+    <!--方法必须加括号-->
+    我是方法的结果{{methodReverse()}}<br>
+</div>
+<script>
+    let view = new Vue({
+        el:'#app',
+        data:{
+            list:[111,222,333],
+            methodList:[555,444,333]
+        },
+        methods:{
+            methodReverse:function () {
+                for (let i=0;i<this.methodList.length;i++) {
+                    this.methodList[i] = this.methodList[i]+1
+                }
+                return this.methodList
+            }
+        }
+        ,
+        computed:{
+            arrayReverse:function () {
+               return this.list.reverse()
+            }
+        }
+    })
+</script>
+</body>
+</html>

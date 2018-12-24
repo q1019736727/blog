@@ -2,25 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.bootcss.com/vue/2.5.18-beta.0/vue.min.js"></script>
     <title>Vue</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
 </head>
 <body>
-<div id="app">{{message | get}}</div>
+<div id="app">
+    <div>{{time | filterString('传入参数')}}</div>
+    <div v-text="vtext"></div>
+    <div v-html="vhtml"></div>
+    <div v-bind:class=redClass>我是红色的</div>
+</div>
 <script>
     let view = new Vue({
         el:'#app',
         data:{
-            message:'hello world'
+            message:'hello world',
+            time: new Date(),
+            vtext:'我是v-text',
+            vhtml:'<b>我是v-html</b>',
+            redClass:"red"
         },
         mounted(){
-
+            var _this = this
+            _this.timer = setInterval(()=>{
+                _this.time = new Date()
+            },1000)
         },
-        filter(){
-
+        beforeDestroy:function(){
+            clearInterval(this.timer)
+        },
+        filters:{
+            //一般第一个参数是过滤参数，后面的才是传入参数
+            filterString:function(value,param) {
+                let year =  value.getFullYear()
+                let month = value.getMonth() + 1
+                let day = value.getDate()
+                let hour = value.getHours()
+                let min = value.getMinutes()
+                let sec = value.getSeconds()
+                return year +'-' + month + '-' + day  + '  ' + hour + ':' + min + ':' + sec +  '  ' + param
+            }
         }
     })
 

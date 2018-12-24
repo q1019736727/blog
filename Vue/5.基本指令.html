@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.18-beta.0/vue.min.js"></script>
+    <style>
+        [v-cloak]{
+            display: block;
+        }
+
+    </style>
+    <title>基本指令</title>
+</head>
+<body>
+<div id="app">
+    <span v-cloak>{{msg}}</span>
+    <br>
+    <hr>
+    v-once使用(onceData无论怎么改变都不再渲染)<br>
+    <span v-once>{{onceData}}</span>
+</div>
+<script>
+    let app = new Vue({
+        el:'#app',
+        data:{
+            msg:'你好世界',
+            onceData: 'onceData渲染数据'
+        }
+    })
+</script>
+
+</body>
+</html>
