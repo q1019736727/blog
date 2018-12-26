@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>子链</title>
+</head>
+<body>
+    <div id="app">
+        <child-acomponent ref="a"></child-acomponent>
+        <child-bcomponent ref="b"></child-bcomponent>
+        <child-ccomponent ref="c"></child-ccomponent>
+        <button @click="changeCom">点击修改子组件元素</button>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            methods:{
+                changeCom:function () {
+                    this.$refs.b.msg = '我修改啦😄我修改啦😄我修改啦😄'
+                }
+            },
+            components: {
+                'child-acomponent': {
+                    data:function(){
+                        return{
+                            msg:'我是组件A'
+                        }
+                    },
+                    template: `<div>{{msg}}</div>`,
+                },
+                'child-bcomponent': {
+                    data:function(){
+                        return{
+                            msg:'我是组件B'
+                        }
+                    },
+                    template: `<div>{{msg}}</div>`,
+                },
+                'child-ccomponent': {
+                    data:function(){
+                        return{
+                            msg:'我是组件C'
+                        }
+                    },
+                    template: `<div>{{msg}}</div>`,
+                },
+            }
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>非父组件的通信</title>
+</head>
+<body>
+    <div id="app">
+        <!--   this.$root.bus.$emit() 和 this.$root.bus.$on()   -->
+        <child-acomponent></child-acomponent>
+        <child-bcomponent></child-bcomponent>
+
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data:{
+                bus: new Vue()
+            },
+            components: {
+
+                'child-acomponent': {
+                    template: `<div>
+                                   <button @click="change">我是a组件,点击改变b组件标题</button>
+                               </div>`,
+                    methods:{
+                        change:function () {
+                            this.$root.bus.$emit('yoyo','我是a组件传过来的，哈哈哈😄')
+                        }
+                    }
+                },
+
+                'child-bcomponent': {
+                    data:function(){
+                        return{
+                            msg: '我是b组件的数据'
+                        }
+                    },
+                    created:function(){
+                        this.$root.bus.$on('yoyo',function (value) {
+                            alert(value)
+                            this.msg = value
+                        })
+                    },
+                    template: `<div>{{msg}}</div>`,
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
