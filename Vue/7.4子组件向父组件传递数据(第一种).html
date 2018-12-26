@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>子组件向父组件传值1</title>
+</head>
+<body>
+    <div id="app">
+        金额:{{count}}
+        <!--这里的change可以随便命名,相当于一个回调事件名称-->
+        <child-component @change="computedMoney" :num="count"></child-component>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                count: 12000
+            },
+            methods:{
+                computedMoney:function (value) {//这里的value就是子组件里面执行回调的值
+                    this.count = value
+                }
+            },
+            components: {
+                'child-component': {
+                    props: ['num'],
+                    data:function(){
+                        return{
+                            count: this.num
+                        }
+                    },
+                    template: `<div>
+                                    <button @click="addNum">+1000</button>
+                                    <button @click="reduceNum">-1000</button>
+                                </div>`,
+                    methods:{
+                        addNum:function(){
+                            this.count += 1000
+                            this.$emit('change',this.count)//执行回调事件并传参
+                        },
+                        reduceNum:function(){
+                            this.count -= 1000
+                            this.$emit('change',this.count)//执行回调事件并传参
+                        }
+                    }
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

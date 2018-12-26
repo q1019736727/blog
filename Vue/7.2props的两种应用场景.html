@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>props的两种应用场景</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model='width'>
+        <child-component msg='请输入宽度' :width='width'></child-component>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data:{
+                width: 0
+            },
+            components: {
+                'child-component': {
+                    props: ['msg','width'],
+                    template: `<div>
+                                    <p>{{title}}</p>
+                                    <div :style='style'></div>
+                               </div>`,
+                    data:function(){
+                        return{
+                            title:this.msg,//第一种用法
+                        }
+                    },
+                    computed:{
+                        style:function(){//第二种用法
+                            return{
+                                border:'1px solid red',
+                                width:this.width+'px',
+                                height: '100px'
+                            }
+                        }
+                    }
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

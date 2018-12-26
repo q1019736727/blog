@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>子组件向父组件传值2</title>
+</head>
+<body>
+<div id="app">
+    金额:{{total}}
+    <!--使用v-model绑定input事件-->
+    <child-component v-model="total" :num="total"></child-component>
+</div>
+
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            total: 12000
+        },
+        components: {
+            'child-component': {
+                props: ['num'],
+                data:function(){
+                    return{
+                        count: this.num
+                    }
+                },
+                template: `<div>
+                                <button @click="addNum">+1000</button>
+                           </div>`,
+                methods:{
+                    addNum:function(){
+                        this.count += 1000
+                        this.$emit('input',this.count)//触发input事件
+                    },
+                }
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

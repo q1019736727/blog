@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.bootcss.com/vue/2.5.18-beta.0/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
     <title>Vue初体验</title>
     <style>
         ol{
@@ -21,15 +21,37 @@
 </head>
 <body>
 <div id="app">
-    选项<input type="checkbox" v-bind:value='value' v-model='pick'>
-    {{pick}}
+    <button @click='add'>{{count}}</button>
+    <button @click='add'>{{count}}</button>
+    <br><br>
+    <btn-component></btn-component>
+    <btn-component></btn-component>
 </div>
 <script>
     let app = new Vue({
         el:'#app',
         data:{
-            pick:true,
-            value:'111'
+          count:0
+        },
+        components:{
+            'btn-component':{
+                template:`<button @click='addcount'>{{count}}</button>`,
+                data:function(){
+                    return{
+                        count:0
+                    }
+                },
+                methods:{
+                    addcount:function(){
+                        this.count ++
+                    }
+                }
+            },
+        },
+        methods:{
+            add:function(){
+                this.count ++
+            }
         }
     })
 </script>

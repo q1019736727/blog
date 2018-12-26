@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.18-beta.0/vue.min.js"></script>
+    <title>父组件向子组件传递信息(props为数组类型)</title>
+</head>
+<body>
+    <div id="app">
+        <child-component v-bind:msg="{name:'我是传入的参数'}"></child-component>
+        <br><br>
+        <child-component msg="{name:'我是传入的参数'}"></child-component>
+    </div>
+    <script>
+        let app = new Vue({
+
+            el:'#app',
+
+            components:{
+                'child-component':{
+                    props:['msg'],
+                    template:`
+                        <div>
+                            {{msg}}
+                            <p>{{msg.name}}</p>
+                        </div>
+                    `,
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
