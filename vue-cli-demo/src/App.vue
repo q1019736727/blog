@@ -1,17 +1,17 @@
 <template>
   <div id="app">
+    <router-view></router-view>
     <img src="./assets/logo.png">
-    <HelloWorld/>
+    <list></list>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
+import list from './components/List'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    list
   }
 }
 </script>
