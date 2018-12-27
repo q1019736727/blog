@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>动态组件绑定</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用 component动态绑定 -->
+        <!-- 结合v-bind:is 使用-->
+        <component :is="viewTag"></component>
+        <button @click="change('A')">第1句</button>
+        <button @click="change('B')">第2句</button>
+        <button @click="change('C')">第3句</button>
+        <button @click="change('D')">第4句</button>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data:{
+              viewTag: 'comA'
+            },
+            methods:{
+                change:function (tag) {
+                    this.viewTag = 'com'+tag
+                }
+            },
+            components: {
+                'comA': {
+                    template: `<div>床前明月光</div>`,
+                },
+                'comB': {
+                    template: `<div>疑是地上霜</div>`,
+                },
+                'comC': {
+                    template: `<div>举头望明月</div>`,
+                },
+                'comD': {
+                    template: `<div>低头思故乡</div>`,
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

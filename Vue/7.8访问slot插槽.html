@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>访问插槽</title>
+</head>
+<body>
+<div id="app">
+    <child-component>
+        <p slot="header">我是标题</p>
+        <p>我是文本11</p>
+        <p>我是文本22</p>
+        <p slot="footer">我是文本33</p>
+    </child-component>
+</div>
+
+<script>
+    let app = new Vue({
+        el: '#app',
+        mounted:function(){
+            //访问插槽
+            let headers = this.$slots.header
+        },
+        components: {
+            'child-component': {
+                template: `<div>
+                                <div class="header">
+                                    <slot name="header"></slot>
+                                </div>
+                                <div class="container">
+                                    <slot></slot>
+                                </div>
+                                <div class="footer">
+                                    <slot name="footer"></slot>
+                                </div>
+                           </div>`,
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

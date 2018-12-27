@@ -26,8 +26,12 @@
     <br><br>
     <btn-component></btn-component>
     <btn-component></btn-component>
+    <test-component></test-component>
 </div>
 <script>
+    Vue.component('test-component',{
+        template:`<div>你好</div>`
+    })
     let app = new Vue({
         el:'#app',
         data:{

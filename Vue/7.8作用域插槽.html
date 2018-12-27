@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>作用域插槽</title>
+</head>
+<body>
+    <div id="app">
+        <child-component>
+            <!-- 2.5 版本之前写法-->
+            <template slot="abc" slot-scope="data">
+                <p>{{data.text}}</p>
+                <p>{{data.sss}}</p>
+            </template>
+
+            <br>
+
+            <!-- 2.5 版本之后写法-->
+            <!--<p slot="abc" slot-scope="data">-->
+                <!--{{data.text}}-->
+                <!--{{data.sss}}-->
+            <!--</p>-->
+
+        </child-component>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            components: {
+                'child-component': {
+                    template: `<div>
+                                   <slot name="abc" text="我是子组件内容111" sss="我是子组件内容222"></slot>
+                               </div>`,
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
