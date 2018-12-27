@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>自定义指令</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-cyfocus>
+    </div>
+
+    <script>
+
+        //自定义命令directive的钩子函数
+        Vue.directive('cyfocus',{
+
+            //被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于document中）
+            inserted:function (el) {
+                el.focus()
+            },
+
+            //只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作 调用
+            bind:function () {
+
+            },
+
+            //被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新
+            update:function () {
+
+            },
+
+            //被绑定元素所在模板完成一次更新周期时调用
+            componentUpdated:function () {
+
+            },
+
+            //只调用一次，指令与元素解绑时调用
+            unbind:function () {
+
+            }
+
+        })
+
+        let app = new Vue({
+            el: '#app',
+            data:{
+
+            }
+        })
+    </script>
+</body>
+</html>

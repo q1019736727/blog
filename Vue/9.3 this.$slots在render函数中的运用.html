@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>this.$slots在render函数中的运用</title></head>
+<body>
+
+<div id="app">
+    <child-component>
+        <h2>锄禾日当午</h2>
+        <h2>汗滴禾下土</h2>
+        <h1 slot="header">我是标题</h1>
+        <h4 slot="footer">我是尾巴</h4>
+    </child-component>
+</div>
+
+<script>
+
+    Vue.component('child-component',{
+
+        render:function (creatElemant) {
+
+            let header =  this.$slots.header //–这返回的内容就是含有=VNODE的数组
+            let main =  this.$slots.default
+            let footer =  this.$slots.footer
+
+            return creatElemant('div',[
+                creatElemant('header',header),
+                creatElemant('main',main),
+                creatElemant('footer',footer)
+            ])
+        }
+    })
+    let app = new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+
+</script>
+</body>
+</html>

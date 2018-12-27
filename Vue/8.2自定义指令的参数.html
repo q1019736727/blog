@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>自定义指令钩子函数参数</title>
+</head>
+<body>
+    <div id="app">
+        <div v-cybind:canshu.a.b.c="message"></div>
+    </div>
+
+    <script>
+
+        Vue.directive('cybind',{
+            //自定义指令钩子函数的参数
+            // el 指令所绑定的元素，可以用来直接操作DOM
+            // binding:一个对象,下面包含很多属性
+            bind:function (el,bind) {
+                el.innerHTML =
+                    'name' + '---' + bind.name + '  //指令名，不包括v前缀' + '<br>' +
+                    'value' + '---' + bind.value + '  //指令的绑定值 (也就是上面的message对应的值)' + '<br>' +
+                    'expression' + '---' + bind.expression + '  //绑定值的字符串形式,即行参 (也就是上面的message)' + '<br>' +
+                    'arg' + '---' + bind.arg + '  //传给指令的参数即上面的  canshu ' + '<br>' +
+                    'modifiers' + '---' + JSON.stringify(bind.modifiers) + '  //一个包含修饰符的对象 也就是上面的.a.b.c变为{"a":true,"b":true,"c":true}' + '<br>'
+
+            }
+        })
+
+        let app = new Vue({
+            el: '#app',
+            data:{
+                message:'我是绑定的数据'
+            }
+        })
+    </script>
+</body>
+</html>

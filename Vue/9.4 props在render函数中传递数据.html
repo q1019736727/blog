@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>props在render函数中传递数据</title></head>
+<body>
+
+<div id="app">
+    <child-component :src="sendURL"></child-component>
+    <button @click="changImg">切换</button>
+</div>
+
+<script>
+
+    let app = new Vue({
+        el:'#app',
+        data:{
+            changeUrl:true,
+            sendURL:'http://pjv07e7aa.bkt.clouddn.com/%20Memories.jpeg',
+            url1:'http://pjv07e7aa.bkt.clouddn.com/%20Memories.jpeg',
+            url2:'http://pjv07e7aa.bkt.clouddn.com/LetMeLoveYou.jpeg'
+        },
+        methods:{
+            changImg:function() {
+                this.changeUrl = !this.changeUrl
+                if (this.changeUrl) {
+                    this.sendURL = 'http://pjv07e7aa.bkt.clouddn.com/%20Memories.jpeg'
+                }else{
+                    this.sendURL = 'http://pjv07e7aa.bkt.clouddn.com/LetMeLoveYou.jpeg'
+                }
+            }
+        },
+        components:{
+            'child-component':{
+                props:['src'],
+                render:function (creatElement) {
+                    return creatElement('img',{
+                        attrs:{
+                            src: this.src
+                        }
+                    })
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

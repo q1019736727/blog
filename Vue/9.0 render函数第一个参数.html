@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>render第一个参数</title></head>
+<body>
+
+    <div id="app">
+        <child-component></child-component>
+    </div>
+
+    <script>
+
+        Vue.component('child-component',{
+
+            //这里的 creatElemant 是必传参数(可以随便命名)
+            render:function (creatElemant) {
+
+                // String类型 返回html标签(这里就返回<h1></h1>)   方法1
+                return creatElemant('h1')
+
+                //Object 返回对象类型   方法2
+                return creatElemant({
+                    template:'<div>我是render出来的</div>'
+                })
+
+
+                //Fountion 返回对象类型  方法2
+                 var dom = function () {
+                     return {
+                         template:'<div>我是函数render出来的</div>'
+                     }
+                 }
+                 return creatElemant(dom()) //这里要注意将creatElemant函数返回
+
+            }
+        })
+
+        let app = new Vue({
+            el:'#app',
+            data:{
+
+            }
+        })
+
+    </script>
+</body>
+</html>

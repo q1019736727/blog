@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>render第一个参数</title></head>
+<body>
+
+<div id="app">
+    <child-component></child-component>
+</div>
+
+<script>
+
+    Vue.component('child-component',{
+
+        render:function (creatElemant) {
+
+            //第二个参数可选
+            return creatElemant({
+                template:`<div></div>`
+            },
+                //第二个参数
+            {
+                //可以设置class
+                class:{
+                    active:true,
+                    myhidden:false
+                },
+                //设置样式
+                style:{
+                    color: 'red',
+                    fontSize: '16px'
+                },
+                //可以设置attribute
+                attrs:{
+                    contentId:'idid',
+                    order:'10'
+                },
+                //可以写原生的dom属性
+                domProps:{
+                    innerHTML:`<p style="color: blue">我是p标签</p>`
+                }
+            })
+
+        }
+    })
+
+    let app = new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+
+</script>
+</body>
+</html>

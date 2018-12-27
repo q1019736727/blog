@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <title>v-model在render函数中的使用</title></head>
+<body>
+
+<div id="app">
+    {{name}}
+    <child-component :data="name" v-model="name" @handle="showName"></child-component>
+</div>
+
+<script>
+
+    let app = new Vue({
+        el:'#app',
+        data:{
+            name:'哈哈'
+        },
+        methods:{
+            showName:function (value) {
+                this.name = value
+                console.log(this.name)
+            }
+        },
+        components:{
+            'child-component':{
+                props:['data'],
+                render:function (creatElement) {
+
+                    let self = this //这儿这样写是因为on里面的this是wind,需要改变this指向
+
+                    return creatElement('input',{
+                        domProps:{
+                            value: this.data
+                        },
+                        on:{
+                            input:function (event) {
+                                // self.data = event.target.value //现在不知道为什么修改父组件传过来的数据要警告
+                                self.$emit('input',event.target.value)
+                                self.$emit('handle',event.target.value)
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
