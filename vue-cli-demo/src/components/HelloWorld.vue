@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'HelloWorld ',
   data () {
     return {
       msg: 'Welcome to Your HelloWorld'
