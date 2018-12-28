@@ -3,6 +3,9 @@
     <h1>HelloEarth</h1>
     <p>{{msg}}</p>
     {{$route.params.earthParam}}
+    <br><br><br>
+    全局状态值 <br>
+    {{this.$store.state.num}}
     <hr>
   </div>
 </template>
@@ -14,7 +17,7 @@
       return {
         msg: 'Welcome to Your HelloEarth'
       }
-    }
+    },
   }
 </script>
 
