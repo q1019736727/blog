@@ -8,15 +8,19 @@
     <script src="https://cdn.bootcss.com/react/16.4.0/umd/react.production.min.js"></script>
     <script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-    <title>父子之间通信</title>
-    <style>
-        .track{
-            padding-right: 40px;
-        }
-    </style>
+    <title>组件通信</title>
 </head>
 <body>
     <div id="app"></div>
-    <script type="text/babel" src="main.jsx"></script>
+    <script type="text/babel">
+
+        function App() {
+            return(
+                <div>你好</div>
+            )
+        }
+        ReactDOM.render(<App/>,document.querySelector('#app'))
+
+    </script>
 </body>
 </html>
