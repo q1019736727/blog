@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="job">
+    <p>{{name}} 是一个 {{job}}</p>
+    <button v-on:click="modifyUser">修改</button>
+</div>
+<p>PS: 两秒钟后，文字自动变化，你也可以通过控制台使用mvvm.name或者mvvm.job改变变量的值</p>
+<script>
+
+    // 没有改变
+    class Subject {
+        constructor() {
+            this.id = Symbol();
+            this.observers = [];
+        }
+
+        addObserver(observer) {
+            this.observers.push(observer);
+        }
+
+        removeObserver(observer) {
+            let index = this.observers.indexOf(observer);
+            if (index > -1) {
+                this.observers.splice(index, 1);
+            }
+        }
+
+        notify() {
+            this.observers.forEach(function (observer) {
+                observer.update();
+            });
+        }
+    }
+
+    // 观察者
+    class Observe {
+        constructor(mvvm, key, callback) {
+            this.mvvm = mvvm;
+            this.key = key;             // 需要观察的属性key
+            this.callback = callback;  // 属性变化时候的回调函数
+            this.subjects = {};        // 订阅的主题列表
+            this.value = this.mvvm[this.key];  // 获取当前key的值
+        }
+
+        update() {
+            // 缓存每一次的新值，用于比较更新
+            let [oldVal, value] = [this.value, this.mvvm[this.key]];
+            this.value = value;
+            this.callback.call(this.mvvm, oldVal, value);
+        }
+
+        subscribeTo(subject) {
+            // 记录订阅的主题列表，如果已经订阅，则不在添加
+            if (!this.subjects[subject.id]) {
+                subject.addObserver(this);
+                this.subjects[subject.id] = subject;
+            }
+        }
+
+    }
+
+    class Compile {
+        constructor(mvvm) {
+            this.mvvm = mvvm;
+            this.analyze(mvvm.$el);
+        }
+
+        analyze(node) {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+                // 解析节点
+                this.compileNode(node);
+                // 如果节点是element，继续递归
+                Array.from(node.childNodes).map((item) => {
+                    this.analyze(item);
+                });
+            } else if (node.nodeType === Node.TEXT_NODE) {
+                // 如果是文本节点，则去处理文本替换
+                this.compileText(node);
+            }
+        }
+
+        compileNode(node) {
+            let attrs = [...node.attributes];
+            attrs.map((attr) => {
+                if (this.isModelDirective(attr.name)) {
+                    this.bindModel(node, attr);
+                } else if (this.isEventDirective(attr.name)) {
+                    this.bindEventHandler(node, attr);
+                }
+            });
+        }
+
+        bindEventHandler(node, attr) {
+            let eventName = attr.name.substr(5);
+            let methodName = attr.value;
+            node.addEventListener(eventName, this.mvvm.$methods[methodName]);
+        }
+
+        bindModel(node, attr) {
+            let key = attr.value;
+            this.mvvm.currentObserve = new Observe(this.mvvm, key, (oldVal, newVal) => {
+                node.value = newVal;
+            });
+            node.value = this.mvvm[key];
+            this.mvvm.currentObserve = null;
+            node.oninput = (e) => {
+                this.mvvm[key] = e.target.value;
+            };
+        }
+
+        isModelDirective(attrName) {
+            return attrName === "v-model";
+        }
+
+        isEventDirective(attrName) {
+            return attrName.indexOf("v-on") === 0;
+        }
+
+        compileText(node) {
+            // 找出文本中所有的{{}}包裹的变量key
+            let reg = /{{(.+?)}}/g;
+            let match;
+            while (match = reg.exec(node.nodeValue)) {
+                // console.log(match);
+                let raw = match[0];
+                let key = match[1].trim();
+                // 为key设置一个观察者
+                this.mvvm.currentObserve = new Observe(this.mvvm, key, (oldVal, newVal) => {
+                    // 当接收到属性值变化的通知时，执行更新
+                    node.nodeValue = node.nodeValue.replace(oldVal, newVal);
+                });
+                // 替换文本节点中的变量
+                node.nodeValue = node.nodeValue.replace(raw, this.mvvm[key]);
+                // 此时观察者订阅已完成，销毁
+                this.mvvm.destroyCurrentObserve();
+            }
+        }
+    }
+
+    // mvvm
+    class MVVM {
+        constructor(options) {
+            this.init(options);  // 初始化mvvm
+            this.dataIntercept(); // 数据劫持
+            new Compile(this);   // 解析el模板
+        }
+
+        init(options) {
+            this.$data = options.data;
+            this.$methods = options.methods;
+            this.$el = document.querySelector(options.el);
+            this.bindData();
+            this.methodsBindThis();
+            this.currentObserve = null;
+
+        }
+
+        methodsBindThis() {
+            //让 this.$methods 里面的函数中的 this，都指向当前的 this，也就是 vm
+            for (let key in this.$methods) {
+                this.$methods[key] = this.$methods[key].bind(this);
+            }
+        }
+
+        destroyCurrentObserve() {
+            this.currentObserve = null;
+        }
+
+        bindData() {
+            // this代理this.$data里的属性
+            Object.keys(this.$data).map((key) => {
+                Object.defineProperty(this, key, {
+                    enumerable: true,
+                    configurable: true,
+                    get() {
+                        return this.$data[key];
+                    },
+                    set(val) {
+                        this.$data[key] = val;
+                    }
+                });
+            });
+
+        }
+
+        dataIntercept() {
+            /**
+             * 代码跟数据劫持相比，多了创建主题、取值的时候订阅主题和设置值的时候发出通知
+             */
+
+            let fn = (data) => {
+                if (!data || typeof data !== "object") {
+                    return false;
+                }
+                Object.keys(data).map((key, index) => {
+                    let initData = data[key];
+                    // 为每个key创建一个主题
+                    let subject = new Subject();
+                    Object.defineProperty(data, key, {
+                        enumerable: true,
+                        configurable: true,
+                        set: (val) => {
+                            // console.log(`修改属性${key}值为${val}`);
+                            initData = val;
+                            subject.notify();  // 如果key的值发生了变化，通知所有的观察者
+                        },
+                        get: () => {
+                            if (this.currentObserve) {
+                                // 如果this.currentObserve存在，就在获取属性的时候
+                                // 订阅当前key的变化
+                                this.currentObserve.subscribeTo(subject);
+                            }
+                            // console.log(`获取属性${key}的值${initData}`);
+                            return initData;
+                        }
+                    });
+                    if (typeof initData === "object") {
+                        dataIntercept(initData);
+                    }
+                });
+            };
+            fn(this.$data);
+        }
+
+    }
+
+    let mvvm = new MVVM({
+        el: "#app",
+        data: {
+            name: "dhx",
+            job: "jser",
+        },
+        methods: {
+            modifyUser() {
+                this.name = this.name + Number.parseInt(Math.random() * 10, 10);
+                this.job = this.job + Number.parseInt(Math.random() * 10, 10);
+            }
+        }
+    });
+
+    setTimeout(function () {
+        mvvm.name = "xingmu";
+        mvvm.job = "csser";
+    }, 2000);
+</script>
+</body>
+</html>
